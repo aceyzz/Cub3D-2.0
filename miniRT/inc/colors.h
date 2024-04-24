@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:49:37 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/21 20:50:13 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/24 23:01:43 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@
 # define EMRD "\033[0;38;2;80;200;120m"    // Émeraude
 # define RUBY "\033[0;38;2;224;17;95m"     // Rubis
 # define RST "\033[0m"
-# define CLRALL "\033[2J\033[3J\033[H"     // Clear terminal (supprime historique)
-# define CLR "\033c"                       // Clear terminal (garde historique)
+# define CLRALL "\033[2J\033[3J\033[H"     // Clear terminal (del historique)
+# define CLR "\033c"                       // Clear terminal (keep historique)
 # define CLRL "\033[2K"                    // Clear ligne terminal
 
 #endif
