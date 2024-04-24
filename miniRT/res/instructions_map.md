@@ -4,7 +4,7 @@
 > EXEMPLE: `[A]		[0.2]	 [255,255,255]`
 - lumière ambiante
 - ses 2 paramètres:
-	- [ `0.2` ]			nombre flottant, désigne le ratio de l'intensité compris entre 0.0 et 1.0
+	- [ `0.2` ]			1 nombre flottant, désigne le ratio de l'intensité compris entre 0.0 et 1.0
 	- [ 255,255,255 ]	3 nombres entiers, couleurs RGB (de 0 a 255)
 
 ---

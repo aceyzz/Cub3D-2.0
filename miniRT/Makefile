@@ -6,7 +6,7 @@
 #    By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/21 20:09:31 by cedmulle          #+#    #+#              #
-#    Updated: 2024/04/21 20:48:48 by cedmulle         ###   ########.fr        #
+#    Updated: 2024/04/24 17:16:22 by cedmulle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ INC_DIR	= ./inc/
 OBJ_DIR	= ./obj/
 
 SRC		= $(SRC_DIR)miniRT.c \
-			$(SRC_DIR)draw_utils.c
+			$(SRC_DIR)draw_utils.c \
+			$(SRC_DIR)ced.c
 OBJ		= $(SRC:.c=.o)
 
 CC		= gcc
