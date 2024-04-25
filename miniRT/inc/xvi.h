@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:50:51 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/25 09:50:26 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 11:15:03 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,11 @@
 
 # define WHITESPACE " \t\n\v\f\r"
 
-typedef struct s_data	t_data;
+typedef struct s_data		t_data;
+typedef struct s_obj		t_obj;
+typedef struct s_light		t_light;
+typedef struct s_camera		t_camera;
+typedef struct s_ambient	t_ambient;
 
 typedef struct s_mlx
 {
@@ -84,5 +88,16 @@ void					check_rgb_values(int rgb[3], t_data *data);
 
 // PARSE_AMBIENT.C
 void					parse_ambient(t_data *data, char *line);
+
+// PARSE_CAMERA.C
+void					parse_camera(t_data *data, char *line);
+
+// PARSE_LIGHT.C
+void					parse_light(t_data *data, char *line);
+
+// DEBUG.C
+void					print_camera(t_camera *camera);
+void					print_ambient(t_ambient *ambient);
+void					print_light(t_light *light);
 
 #endif

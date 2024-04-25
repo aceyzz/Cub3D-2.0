@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 22:20:31 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/25 09:49:10 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 11:14:47 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ static void	free_objs(t_objs *objs)
 
 void	err_exit_void(char *msg)
 {
-	ft_putstr_fd(REDD "Error: " YLLW, 2);
+	ft_putstr_fd(REDD "Error:\n", 2);
+	ft_putstr_fd(YLLW "-> ", 2);
 	if (msg)
 		ft_putstr_fd(msg, 2);
 	else

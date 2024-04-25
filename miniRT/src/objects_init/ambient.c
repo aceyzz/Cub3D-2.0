@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 09:42:43 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/25 09:55:58 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 11:06:01 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,10 @@ static void	init_ambient(t_data *data)
 		err_exit_free("Malloc error", data);
 }
 
-static void	print_ambient(t_ambient *ambient)
+static void	check_ratio(double ratio, t_data *data)
 {
-	printf("Ambient light:\n");
-	printf("Ratio: %f\n", ambient->ratio);
-	printf("RGB[0]: %d\n", ambient->rgb[0]);
-	printf("RGB[1]: %d\n", ambient->rgb[1]);
-	printf("RGB[2]: %d\n", ambient->rgb[2]);
+	if (ratio < 0 || ratio > 1)
+		err_exit_free("Invalid ambient light ratio", data);
 }
 
 void	parse_ambient(t_data *data, char *line)
@@ -50,5 +47,6 @@ void	parse_ambient(t_data *data, char *line)
 	data->objs->ambient->rgb[2] = parse_int(tmp[i], data);
 	free_tab(tmp);
 	check_rgb_values(data->objs->ambient->rgb, data);
+	check_ratio(data->objs->ambient->ratio, data);
 	print_ambient(data->objs->ambient);
 }
