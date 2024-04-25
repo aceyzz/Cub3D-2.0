@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:21:00 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/24 17:13:05 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 09:53:14 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ typedef struct s_plane
 	double		position[3];	// x, y, z
 	double		direction[3];	// x, y, z
 	int			rgb[3];			// entre 0 et 255
+	struct s_plane	*next;
+	struct s_plane	*prev;
 }				t_plane;
 
 typedef struct s_sphere
@@ -73,6 +75,8 @@ typedef struct s_sphere
 	double		diameter;
 	double		position[3];	// x, y, z
 	int			rgb[3];			// entre 0 et 255
+	struct s_sphere	*next;
+	struct s_sphere	*prev;
 }				t_sphere;
 
 typedef struct s_cylinder
@@ -82,6 +86,8 @@ typedef struct s_cylinder
 	double		position[3];	// x, y, z
 	double		direction[3];	// x, y, z
 	int			rgb[3];			// entre 0 et 255
+	struct s_cylinder	*next;
+	struct s_cylinder	*prev;
 }				t_cylinder;
 
 typedef struct s_objs

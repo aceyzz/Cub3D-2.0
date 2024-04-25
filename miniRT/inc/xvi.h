@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:50:51 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/24 23:01:29 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 09:50:26 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void					free_tab(char **tab);
 void					check_params(int argc, char **argv);
 
 // UTILS.C
-int						ft_iswhitespace(char c);
+int						is_space(char c);
 int						tablen(char **tab);
 void					tab_trimmer(char **tab);
 void					print_tab(char **tab);
@@ -73,5 +73,16 @@ void					init_data_parse(t_parse *parse);
 
 // MAIN_PARSE.C
 void					init_data(t_data *data, char *filename);
+
+// UTILS_DOUBLE.C
+double					ft_atod(char *str);
+double					parse_double(char *str, t_data *data);
+
+// UTILS_INT.C
+int						parse_int(char *str, t_data *data);
+void					check_rgb_values(int rgb[3], t_data *data);
+
+// PARSE_AMBIENT.C
+void					parse_ambient(t_data *data, char *line);
 
 #endif

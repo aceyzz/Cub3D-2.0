@@ -6,11 +6,30 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 22:20:31 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/24 22:20:44 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 09:49:10 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
+
+static void	free_objs(t_objs *objs)
+{
+	if (!objs)
+		return ;
+	if (objs->ambient)
+		free(objs->ambient);
+	if (objs->camera)
+		free(objs->camera);
+	if (objs->light)
+		free(objs->light);
+	if (objs->sphere)
+		free(objs->sphere);
+	if (objs->plane)
+		free(objs->plane);
+	if (objs->cylinder)
+		free(objs->cylinder);
+	free(objs);
+}
 
 void	err_exit_void(char *msg)
 {
@@ -26,7 +45,9 @@ void	err_exit_void(char *msg)
 void	err_exit_free(char *msg, t_data *data)
 {
 	free_tab(data->parse->filetab);
-	free(data->parse->filestr);
+	if (data->parse->filestr)
+		free(data->parse->filestr);
+	free_objs(data->objs);
 	err_exit_void(msg);
 }
 

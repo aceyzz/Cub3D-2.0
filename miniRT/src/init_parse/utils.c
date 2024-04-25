@@ -6,13 +6,13 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 22:19:11 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/24 22:20:11 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 09:45:46 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-int	ft_iswhitespace(char c)
+int	is_space(char c)
 {
 	if (c == ' ' || c == '\t' || c == '\n' || c == '\v' || c == '\f'
 		|| c == '\r')
@@ -28,6 +28,24 @@ int	tablen(char **tab)
 	while (tab[i])
 		i++;
 	return (i);
+}
+
+void	commas_to_spaces(char **tab)
+{
+	int	i;
+	int	k;
+
+	i = -1;
+	while (tab[++i])
+	{
+		k = 0;
+		while (tab[i][k])
+		{
+			if (tab[i][k] == ',')
+				tab[i][k] = ' ';
+			k++;
+		}
+	}
 }
 
 void	tab_trimmer(char **tab)
@@ -46,6 +64,7 @@ void	tab_trimmer(char **tab)
 			free(tmp);
 		}
 	}
+	commas_to_spaces(tab);
 }
 
 void	print_tab(char **tab)

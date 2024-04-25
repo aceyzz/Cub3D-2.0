@@ -6,13 +6,13 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:35:46 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/24 23:02:07 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 09:49:46 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-void	parse_file(t_parse *parse, char *filename)
+static void	parse_file(t_parse *parse, char *filename)
 {
 	int		fd;
 	int		size;
@@ -40,6 +40,39 @@ void	parse_file(t_parse *parse, char *filename)
 	tab_trimmer(parse->filetab);
 }
 
+void	check_file(t_data *data, char **tab)
+{
+	int	i;
+
+	i = -1;
+	while (tab[++i])
+	{
+		if (tab[i][0] == 'A' && is_space(tab[i][1]))
+			parse_ambient(data, tab[i]);
+		// else if (tab[i][0] == 'C' && is_space(tab[i][1]))
+		// 	parse_camera(data, tab[i]);
+		// else if (tab[i][0] == 'L' && is_space(tab[i][1]))
+		// 	parse_light(data, tab[i]);
+		// else if (tab[i][0] == 's' && tab[i][1] == 'p' && is_space(tab[i][2]))
+		// 	parse_sphere(data, tab[i]);
+		// else if (tab[i][0] == 'p' && tab[i][1] == 'l' && is_space(tab[i][2]))
+		// 	parse_plane(data, tab[i]);
+		// else if (tab[i][0] == 's' && tab[i][1] == 'q' && is_space(tab[i][2]))
+		// 	parse_square(data, tab[i]);
+		// else if (tab[i][0] == 'c' && tab[i][1] == 'y' && is_space(tab[i][2]))
+		// 	parse_cylinder(data, tab[i]);
+		else
+			err_exit_free("Invalid object in file", data);
+	}
+}
+
+void	init_objs(t_data *data)
+{
+	data->objs = malloc(sizeof(t_objs));
+	if (!data->objs)
+		err_exit_free("Malloc error", data);
+}
+
 void	init_data(t_data *data, char *filename)
 {
 	t_parse	parse;
@@ -48,8 +81,9 @@ void	init_data(t_data *data, char *filename)
 	init_data_parse(&parse);
 	parse_file(&parse, filename);
 	if (tablen(data->parse->filetab) < 6)
-		err_exit_free("Not enough objects in file", data);
-	// check_file(data);
+		err_exit_free("Not enough objects in file (6 minimum)", data);
+	init_objs(data);
+	check_file(data, parse.filetab);
 	// check_data(data, parse.filetab);
 	// init_params(data, parse.filetab);
 	print_tab(data->parse->filetab);
