@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 09:42:43 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/25 09:52:26 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 09:55:58 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,14 @@ static void	print_ambient(t_ambient *ambient)
 {
 	printf("Ambient light:\n");
 	printf("Ratio: %f\n", ambient->ratio);
-	printf("RGB: %d, %d, %d\n", ambient->rgb[0], ambient->rgb[1], ambient->rgb[2]);
+	printf("RGB[0]: %d\n", ambient->rgb[0]);
+	printf("RGB[1]: %d\n", ambient->rgb[1]);
+	printf("RGB[2]: %d\n", ambient->rgb[2]);
 }
 
 void	parse_ambient(t_data *data, char *line)
 {
-	int	i;
+	int		i;
 	char	**tmp;
 
 	data->parse->a_counter++;

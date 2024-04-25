@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 09:03:03 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/25 09:49:35 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 09:56:37 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ double	ft_atof(const char *str)
 		decimal = decimal * 10 + (str[i] - '0');
 		i++;
 	}
-	return decimal;
+	return (decimal);
 }
 
 double	ft_atod(char *str)
@@ -94,7 +94,7 @@ double	parse_double(char *str, t_data *data)
 		if (!is_valid_double(tmp, k, i))
 		{
 			free(tmp);
-			err_exit_free("Invalid double in file", data);	
+			err_exit_free("Invalid double in file", data);
 		}
 		result = ft_atod(tmp);
 		free(tmp);
