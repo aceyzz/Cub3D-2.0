@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 11:05:26 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/25 11:29:27 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 11:35:58 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,28 @@ void	print_sphere(t_sphere *sphere)
 		sphere = sphere->next;
 	}
 	sphere = tmp;
+}
+
+void	print_plane(t_plane *plane)
+{
+	t_plane	*tmp;
+	int		i;
+
+	tmp = plane;
+	i = 0;
+	while (plane)
+	{
+		printf("%sPlane (%d):\n", LIME, i++);
+		printf("Position[0]: %f\n", plane->position[0]);
+		printf("Position[1]: %f\n", plane->position[1]);
+		printf("Position[2]: %f\n", plane->position[2]);
+		printf("Direction[0]: %f\n", plane->direction[0]);
+		printf("Direction[1]: %f\n", plane->direction[1]);
+		printf("Direction[2]: %f\n", plane->direction[2]);
+		printf("RGB[0]: %d\n", plane->rgb[0]);
+		printf("RGB[1]: %d\n", plane->rgb[1]);
+		printf("RGB[2]: %d\n\n%s", plane->rgb[2], RST);
+		plane = plane->next;
+	}
+	plane = tmp;
 }

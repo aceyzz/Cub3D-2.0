@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 22:19:11 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/25 09:45:46 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 11:41:52 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,18 @@ void	print_tab(char **tab)
 		ft_putstr_fd("\n" RST, STDOUT_FILENO);
 		i++;
 	}
+}
+
+int	is_empty_line(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (!is_space(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }
