@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 11:31:38 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/25 12:06:17 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 12:40:52 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	parse_plane(t_data *data, char *line)
 	data->parse->pl_counter++;
 	init_plane(data);
 	tmp = ft_split(line + 2, ' ');
-	if (tablen(tmp) != 9)
+	if (ft_tablen(tmp) != 9)
 	{
 		free_tab(tmp);
 		err_exit_free("Invalid plane", data);

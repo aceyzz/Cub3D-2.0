@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:21:00 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/25 11:24:40 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 12:37:53 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@
 # include <fcntl.h>
 # include <errno.h>
 # include <limits.h>
+
+# define DEBUG 1
 
 /*
 	Ce header est le principal
@@ -90,14 +92,20 @@ typedef struct s_cylinder
 	struct s_cylinder	*prev;
 }				t_cylinder;
 
+// les pl, sp et cy sont des listes chainées
+// on peut en avoir plusieurs de chaque
+// minimum 3 objets peu importe le type (pl, sp, cy)
 typedef struct s_objs
 {
-	t_ambient	*ambient;
-	t_camera	*camera;
-	t_light		*light;
+	t_ambient	*ambient;	// 1 seul (mandatory)
+	t_camera	*camera;	// 1 seul (mandatory)
+	t_light		*light;		// 1 seul (mandatory)
 	t_plane		*plane;
 	t_sphere	*sphere;
 	t_cylinder	*cylinder;
+	int			nb_pl;		// nombre de plans
+	int			nb_sp;		// nombre de spheres
+	int			nb_cy;		// nombre de cylindres
 }				t_objs;
 
 typedef struct s_data

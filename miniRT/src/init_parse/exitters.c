@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 22:20:31 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/25 12:16:10 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 12:27:10 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,12 @@ void	err_exit_void(char *msg)
 
 void	err_exit_free(char *msg, t_data *data)
 {
-	free_tab(data->parse->filetab);
+	if (data->parse->filetab)
+		free_tab(data->parse->filetab);
 	if (data->parse->filestr)
 		free(data->parse->filestr);
-	free_objs(data->objs);
+	if (data->objs)
+		free_objs(data->objs);
 	err_exit_void(msg);
 }
 

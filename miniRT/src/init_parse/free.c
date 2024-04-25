@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 12:06:56 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/25 12:16:19 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 12:27:03 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,6 @@ static void	free_sphere(t_sphere *sphere)
 
 void	free_objs(t_objs *objs)
 {
-	if (!objs)
-		return ;
 	if (objs->ambient)
 		free(objs->ambient);
 	if (objs->camera)
@@ -79,5 +77,6 @@ void	free_objs(t_objs *objs)
 	free_cylinder(objs->cylinder);
 	free_plane(objs->plane);
 	free_sphere(objs->sphere);
-	free(objs);
+	if (objs)
+		free(objs);
 }

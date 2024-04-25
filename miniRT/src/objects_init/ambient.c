@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 09:42:43 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/25 12:06:01 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 12:40:52 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	parse_ambient(t_data *data, char *line)
 		err_exit_free("Too many ambient lights", data);
 	init_ambient(data);
 	tmp = ft_split(line + 1, ' ');
-	if (tablen(tmp) != 4)
+	if (ft_tablen(tmp) != 4)
 	{
 		free_tab(tmp);
 		err_exit_free("Invalid ambient light", data);

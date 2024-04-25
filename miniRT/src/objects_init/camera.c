@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 10:35:48 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/25 12:06:06 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 12:40:52 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	parse_camera(t_data *data, char *line)
 		err_exit_free("Too many cameras", data);
 	init_camera(data);
 	tmp = ft_split(line + 1, ' ');
-	if (tablen(tmp) != 7)
+	if (ft_tablen(tmp) != 7)
 	{
 		free_tab(tmp);
 		err_exit_free("Invalid camera", data);
@@ -59,6 +59,6 @@ void	parse_camera(t_data *data, char *line)
 	i = 0;
 	get_pos_camera(data, tmp, &i);
 	get_dir_camera(data, tmp, &i);
-	data->objs->camera->fov = parse_double(tmp[tablen(tmp) - 1], data);
+	data->objs->camera->fov = parse_double(tmp[ft_tablen(tmp) - 1], data);
 	free_tab(tmp);
 }

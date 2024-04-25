@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 22:19:11 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/25 11:41:52 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 12:42:04 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	is_space(char c)
 	return (0);
 }
 
-int	tablen(char **tab)
+int	ft_tablen(char **tab)
 {
 	int	i;
 
@@ -65,25 +65,6 @@ void	tab_trimmer(char **tab)
 		}
 	}
 	commas_to_spaces(tab);
-}
-
-void	print_tab(char **tab)
-{
-	int	i;
-
-	i = 0;
-	if (!tab)
-		return ;
-	while (tab[i])
-	{
-		if (i % 2 == 0)
-			ft_putstr_fd(GRY1, STDOUT_FILENO);
-		else
-			ft_putstr_fd(GRY2, STDOUT_FILENO);
-		ft_putstr_fd(tab[i], STDOUT_FILENO);
-		ft_putstr_fd("\n" RST, STDOUT_FILENO);
-		i++;
-	}
 }
 
 int	is_empty_line(char *str)

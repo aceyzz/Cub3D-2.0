@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 11:16:17 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/25 12:06:21 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 12:40:52 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	parse_sphere(t_data *data, char *line)
 	data->parse->sp_counter++;
 	init_sphere(data);
 	tmp = ft_split(line + 2, ' ');
-	if (tablen(tmp) != 7)
+	if (ft_tablen(tmp) != 7)
 	{
 		free_tab(tmp);
 		err_exit_free("Invalid sphere", data);

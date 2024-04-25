@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:50:51 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/25 12:15:07 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 12:43:28 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,16 +72,19 @@ void					free_objs(t_objs *objs);
 
 // CHECK_ARGS.C
 void					check_params(int argc, char **argv);
+void					check_nb_params(t_data *data);
+void					check_file(t_data *data, char **tab);
 
 // UTILS.C
 int						is_space(char c);
-int						tablen(char **tab);
+int						ft_tablen(char **tab);
 void					tab_trimmer(char **tab);
-void					print_tab(char **tab);
 int						is_empty_line(char *str);
 
 // INIT_DATA.C
 void					init_data_parse(t_parse *parse);
+void					init_objs(t_data *data);
+void					export_objects_count(t_data *data);
 
 // MAIN_PARSE.C
 void					init_data(t_data *data, char *filename);
@@ -107,7 +110,9 @@ void					parse_plane(t_data *data, char *line);
 // CYLINDER.C
 void					parse_cylinder(t_data *data, char *line);
 
-// DEBUG.C
+// PRINTER_OBJS.C
 void					print_objs(t_objs *objs);
+// PRINTER.C
+void					print_tab(char **tab);
 
 #endif

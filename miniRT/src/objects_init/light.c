@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 10:53:30 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/25 12:06:13 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 12:40:52 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	parse_light(t_data *data, char *line)
 		err_exit_free("Too many lights", data);
 	init_light(data);
 	tmp = ft_split(line + 1, ' ');
-	if (tablen(tmp) != 7)
+	if (ft_tablen(tmp) != 7)
 	{
 		free_tab(tmp);
 		err_exit_free("Invalid light", data);
