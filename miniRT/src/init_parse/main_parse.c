@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:35:46 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/25 10:53:22 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 11:16:27 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ void	check_file(t_data *data, char **tab)
 			parse_camera(data, tab[i]);
 		else if (tab[i][0] == 'L' && is_space(tab[i][1]))
 			parse_light(data, tab[i]);
-		// else if (tab[i][0] == 's' && tab[i][1] == 'p' && is_space(tab[i][2]))
-		// 	parse_sphere(data, tab[i]);
+		else if (tab[i][0] == 's' && tab[i][1] == 'p' && is_space(tab[i][2]))
+			parse_sphere(data, tab[i]);
 		// else if (tab[i][0] == 'p' && tab[i][1] == 'l' && is_space(tab[i][2]))
 		// 	parse_plane(data, tab[i]);
 		// else if (tab[i][0] == 's' && tab[i][1] == 'q' && is_space(tab[i][2]))

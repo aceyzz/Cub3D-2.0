@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:21:00 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/25 09:57:11 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 11:24:40 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ typedef struct s_plane
 typedef struct s_sphere
 {
 	double			diameter;
-	double			position[3];	// x, y, z
+	double			position[3];	// x, y, z : pos du centre de la sphere!
 	int				rgb[3];			// entre 0 et 255
 	struct s_sphere	*next;
 	struct s_sphere	*prev;

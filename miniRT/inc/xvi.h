@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:50:51 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/25 11:15:03 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 11:28:58 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_obj		t_obj;
 typedef struct s_light		t_light;
 typedef struct s_camera		t_camera;
 typedef struct s_ambient	t_ambient;
+typedef struct s_sphere		t_sphere;
 
 typedef struct s_mlx
 {
@@ -95,9 +96,13 @@ void					parse_camera(t_data *data, char *line);
 // PARSE_LIGHT.C
 void					parse_light(t_data *data, char *line);
 
+// PARSE_SPHERE.C
+void					parse_sphere(t_data *data, char *line);
+
 // DEBUG.C
 void					print_camera(t_camera *camera);
 void					print_ambient(t_ambient *ambient);
 void					print_light(t_light *light);
+void					print_sphere(t_sphere *sphere);
 
 #endif

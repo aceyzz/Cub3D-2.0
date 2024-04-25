@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 10:53:30 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/25 11:11:47 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 11:22:53 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	init_light(t_data *data)
 		err_exit_free("Malloc error", data);
 }
 
-static void	get_values(t_data *data, char **tmp)
+static void	get_values_light(t_data *data, char **tmp)
 {
 	int	i;
 
@@ -50,7 +50,7 @@ void	parse_light(t_data *data, char *line)
 		free_tab(tmp);
 		err_exit_free("Invalid light", data);
 	}
-	get_values(data, tmp);
+	get_values_light(data, tmp);
 	free_tab(tmp);
 	print_light(data->objs->light);
 }
