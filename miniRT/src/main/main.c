@@ -6,25 +6,38 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:20:42 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/25 12:43:08 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 17:45:18 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
+/*
+	check_params() fait les premiers checks (argv)
+	init_data() parse le fichier de config et init la scene
+	init_mlx() pour la fenetre et l'image
+	mlx_hook():
+		- close_win() pour fermer la fenetre
+		- keypress() pour les touches (rota & move)
+	mlx_loop_hook() pour eviter les lags, refresh l'image en continu
+	
+	raytracer() sera la fonction de dessin (Point d'entree du raytracing)
+
+	mlx_loop() pour garder la fenetre ouverte
+	valid_exit() pour free tout proprement
+*/
 int	main(int argc, char **argv)
 {
 	t_data	data;
 
-	check_params(argc, argv);// basique (CED)
-	init_data(&data, argv[1]);// init et check des données (CED)
-	// init_mlx(&data);// init de la mlx (CED)
-	// A PARTIR DE LA, fonction de dessin
-	// render(&data);// dessin de la scene sur l'image data->mlx->img (CHRIS)
-	// mlx_put_image_to_window(data.mlx->mlx, data.mlx->win, data.mlx->img, 0, 0);// affichage de l'image (CED)
-	// mlx_hook(data.mlx->win, 17, 1L << 17, close_win, &data);// gestion de la croix rouge (CED)
-	// mlx_hook(data.mlx->win, 2, 1L << 0, key_hook, &data);// activation des touches pressées (CED)
-	// mlx_hook(data.mlx->win, 3, 1L << 1, key_release, &data);// activation des touches relachées (CED)
-	valid_exit(&data);// free et exit (CED)
+	check_params(argc, argv);
+	init_data(&data, argv[1]);
+	init_mlx(&data);
+	mlx_hook(data.mlx->win, 17, 1L << 17, close_win, &data);
+	mlx_hook(data.mlx->win, 2, 1L << 0, keypress, &data);
+	mlx_loop_hook(data.mlx->mlx, update_image, &data);
+	// raytracer(&data);
+	mlx_loop(data.mlx->mlx);
+	valid_exit(&data);
 	return (0);
 }

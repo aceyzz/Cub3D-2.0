@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:50:51 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/25 12:43:28 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 17:40:56 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,5 +114,19 @@ void					parse_cylinder(t_data *data, char *line);
 void					print_objs(t_objs *objs);
 // PRINTER.C
 void					print_tab(char **tab);
+
+// MLX.C
+int						close_win(t_data *data);
+void					free_mlx(t_mlx *mlx);
+void					init_mlx(t_data *data);
+char					*get_key_name(int key);
+int						update_image(t_data *data);
+
+// KEYS.C
+int						keypress(int key, t_data *data);
+
+// DRAW.C
+void					my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
+int						update_image(t_data *data);
 
 #endif

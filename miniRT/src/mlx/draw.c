@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_utils.c                                       :+:      :+:    :+:   */
+/*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/21 20:28:12 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/21 21:01:26 by cedmulle         ###   ########.fr       */
+/*   Created: 2024/04/25 17:29:19 by cedmulle          #+#    #+#             */
+/*   Updated: 2024/04/25 17:40:57 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,13 @@ void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color)
 
 	dst = mlx->addr + (y * mlx->len + x * (mlx->bpp / 8));
 	*(unsigned int *)dst = color;
+}
+
+int	update_image(t_data *data)
+{
+	t_mlx	*mlx;
+
+	mlx = data->mlx;
+	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
+	return (0);
 }
