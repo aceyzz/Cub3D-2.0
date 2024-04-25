@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 09:03:03 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/25 09:57:31 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 11:52:30 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,4 +101,12 @@ double	parse_double(char *str, t_data *data)
 		return (result);
 	}
 	return (42.424242);
+}
+
+int	check_dir_values(double direction[3], t_data *data)
+{
+	if (direction[0] < -1 || direction[0] > 1 || direction[1] < -1
+		|| direction[1] > 1 || direction[2] < -1 || direction[2] > 1)
+		err_exit_free("Invalid direction (range 0 to 1)", data);
+	return (1);
 }

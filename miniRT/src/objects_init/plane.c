@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 11:31:38 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/25 11:43:08 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 11:52:44 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,6 @@ static void	init_plane(t_data *data)
 	}
 }
 
-static void	check_dir_plane(double dir[3], t_data *data)
-{
-	if (dir[0] < -1 || dir[0] > 1 || dir[1] < -1 || dir[1] > 1
-		|| dir[2] < -1 || dir[2] > 1)
-		err_exit_free("Invalid plane direction", data);
-}
-
 static void	get_values_plane(t_data *data, char **tmp)
 {
 	int	i;
@@ -55,7 +48,7 @@ static void	get_values_plane(t_data *data, char **tmp)
 	data->objs->plane->rgb[0] = parse_int(tmp[i++], data);
 	data->objs->plane->rgb[1] = parse_int(tmp[i++], data);
 	data->objs->plane->rgb[2] = parse_int(tmp[i], data);
-	check_dir_plane(data->objs->plane->direction, data);
+	check_dir_values(data->objs->plane->direction, data);
 	check_rgb_values(data->objs->plane->rgb, data);
 }
 

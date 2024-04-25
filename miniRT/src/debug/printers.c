@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 11:05:26 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/25 11:35:58 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 11:57:23 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,4 +89,30 @@ void	print_plane(t_plane *plane)
 		plane = plane->next;
 	}
 	plane = tmp;
+}
+
+void	print_cylinder(t_cylinder *cylinder)
+{
+	t_cylinder	*tmp;
+	int			i;
+
+	tmp = cylinder;
+	i = 0;
+	while (cylinder)
+	{
+		printf("%sCylinder (%d):\n", PINK, i++);
+		printf("Position[0]: %f\n", cylinder->position[0]);
+		printf("Position[1]: %f\n", cylinder->position[1]);
+		printf("Position[2]: %f\n", cylinder->position[2]);
+		printf("Direction[0]: %f\n", cylinder->direction[0]);
+		printf("Direction[1]: %f\n", cylinder->direction[1]);
+		printf("Direction[2]: %f\n", cylinder->direction[2]);
+		printf("Diameter: %f\n", cylinder->diameter);
+		printf("Height: %f\n", cylinder->height);
+		printf("RGB[0]: %d\n", cylinder->rgb[0]);
+		printf("RGB[1]: %d\n", cylinder->rgb[1]);
+		printf("RGB[2]: %d\n\n%s", cylinder->rgb[2], RST);
+		cylinder = cylinder->next;
+	}
+	cylinder = tmp;
 }

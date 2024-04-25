@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:35:46 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/25 11:42:45 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 11:56:07 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,8 @@ void	check_file(t_data *data, char **tab)
 			parse_sphere(data, tab[i]);
 		else if (tab[i][0] == 'p' && tab[i][1] == 'l' && is_space(tab[i][2]))
 			parse_plane(data, tab[i]);
-		// else if (tab[i][0] == 's' && tab[i][1] == 'q' && is_space(tab[i][2]))
-		// 	parse_square(data, tab[i]);
-		// else if (tab[i][0] == 'c' && tab[i][1] == 'y' && is_space(tab[i][2]))
-		// 	parse_cylinder(data, tab[i]);
+		else if (tab[i][0] == 'c' && tab[i][1] == 'y' && is_space(tab[i][2]))
+			parse_cylinder(data, tab[i]);
 		else if (is_empty_line(tab[i]))
 			continue ;
 		else

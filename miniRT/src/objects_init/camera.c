@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 10:35:48 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/25 11:05:41 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 11:53:29 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,7 @@ static void	get_dir_camera(t_data *data, char **tmp, int *ref_i)
 	data->objs->camera->direction[0] = parse_double(tmp[i++], data);
 	data->objs->camera->direction[1] = parse_double(tmp[i++], data);
 	data->objs->camera->direction[2] = parse_double(tmp[i], data);
-	if (data->objs->camera->direction[0] < -1
-		|| data->objs->camera->direction[0] > 1
-		|| data->objs->camera->direction[1] < -1
-		|| data->objs->camera->direction[1] > 1
-		|| data->objs->camera->direction[2] < -1
-		|| data->objs->camera->direction[2] > 1)
-		err_exit_free("Invalid camera direction", data);
+	check_dir_values(data->objs->camera->direction, data);
 }
 
 void	parse_camera(t_data *data, char *line)
