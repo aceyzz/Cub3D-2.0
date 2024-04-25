@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 11:45:54 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/25 11:55:40 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 12:06:09 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,6 @@ void	parse_cylinder(t_data *data, char *line)
 	char	**tmp;
 
 	data->parse->cy_counter++;
-	if (data->parse->cy_counter > 1)
-		err_exit_free("Too many cylinders", data);
 	init_cylinder(data);
 	tmp = ft_split(line + 2, ' ');
 	if (tablen(tmp) != 11)
@@ -73,5 +71,4 @@ void	parse_cylinder(t_data *data, char *line)
 	}
 	get_values_cylinder(data, tmp);
 	free_tab(tmp);
-	print_cylinder(data->objs->cylinder);
 }

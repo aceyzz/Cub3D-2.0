@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 10:35:48 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/25 11:53:29 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 12:06:06 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,4 @@ void	parse_camera(t_data *data, char *line)
 	get_dir_camera(data, tmp, &i);
 	data->objs->camera->fov = parse_double(tmp[tablen(tmp) - 1], data);
 	free_tab(tmp);
-	print_camera(data->objs->camera);
 }

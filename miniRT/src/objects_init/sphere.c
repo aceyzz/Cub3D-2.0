@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 11:16:17 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/25 11:29:50 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 12:06:21 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,4 @@ void	parse_sphere(t_data *data, char *line)
 	}
 	get_values_sphere(data, tmp);
 	free_tab(tmp);
-	print_sphere(data->objs->sphere);
 }

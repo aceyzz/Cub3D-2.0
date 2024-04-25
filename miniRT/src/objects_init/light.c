@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 10:53:30 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/25 11:22:53 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 12:06:13 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,4 @@ void	parse_light(t_data *data, char *line)
 	}
 	get_values_light(data, tmp);
 	free_tab(tmp);
-	print_light(data->objs->light);
 }

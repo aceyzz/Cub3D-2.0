@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 11:31:38 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/25 11:52:44 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 12:06:17 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,6 @@ void	parse_plane(t_data *data, char *line)
 	char	**tmp;
 
 	data->parse->pl_counter++;
-	if (data->parse->pl_counter > 1)
-		err_exit_free("Too many planes", data);
 	init_plane(data);
 	tmp = ft_split(line + 2, ' ');
 	if (tablen(tmp) != 9)
@@ -68,5 +66,4 @@ void	parse_plane(t_data *data, char *line)
 	}
 	get_values_plane(data, tmp);
 	free_tab(tmp);
-	print_plane(data->objs->plane);
 }

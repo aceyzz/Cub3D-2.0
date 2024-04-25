@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:35:46 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/25 11:56:07 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 12:11:35 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void	check_file(t_data *data, char **tab)
 	i = -1;
 	while (tab[++i])
 	{
+		if (ft_strlen(tab[i]) < 3 && !is_empty_line(tab[i]))
+			err_exit_free("Invalid line in file", data);
 		if (tab[i][0] == 'A' && is_space(tab[i][1]))
 			parse_ambient(data, tab[i]);
 		else if (tab[i][0] == 'C' && is_space(tab[i][1]))
@@ -84,9 +86,9 @@ void	init_data(t_data *data, char *filename)
 		err_exit_free("Not enough objects in file (6 minimum)", data);
 	init_objs(data);
 	check_file(data, parse.filetab);
-	// check_data(data, parse.filetab);
-	// init_params(data, parse.filetab);
-	print_tab(data->parse->filetab);
 	free_tab(parse.filetab);
 	free(parse.filestr);
+	// check_data(data, parse.filetab);
+	// init_params(data, parse.filetab);
+	print_objs(data->objs);
 }

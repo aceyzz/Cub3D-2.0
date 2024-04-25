@@ -6,13 +6,13 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 11:05:26 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/25 11:57:23 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 12:12:33 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-void	print_camera(t_camera *camera)
+static void	print_camera(t_camera *camera)
 {
 	printf("%sCamera:\n", CYAN);
 	printf("Position[0]: %f\n", camera->position[0]);
@@ -24,7 +24,7 @@ void	print_camera(t_camera *camera)
 	printf("FOV: %f\n\n%s", camera->fov, RST);
 }
 
-void	print_ambient(t_ambient *ambient)
+static void	print_ambient(t_ambient *ambient)
 {
 	printf("%sAmbient light:\n", ORNG);
 	printf("Ratio: %f\n", ambient->ratio);
@@ -33,7 +33,7 @@ void	print_ambient(t_ambient *ambient)
 	printf("RGB[2]: %d\n\n%s", ambient->rgb[2], RST);
 }
 
-void	print_light(t_light *light)
+static void	print_light(t_light *light)
 {
 	printf("%sLight:\n", YLLW);
 	printf("Position[0]: %f\n", light->position[0]);
@@ -45,7 +45,7 @@ void	print_light(t_light *light)
 	printf("RGB[2]: %d\n\n%s", light->rgb[2], RST);
 }
 
-void	print_sphere(t_sphere *sphere)
+static void	print_sphere(t_sphere *sphere)
 {
 	t_sphere	*tmp;
 	int			i;
@@ -67,7 +67,7 @@ void	print_sphere(t_sphere *sphere)
 	sphere = tmp;
 }
 
-void	print_plane(t_plane *plane)
+static void	print_plane(t_plane *plane)
 {
 	t_plane	*tmp;
 	int		i;
@@ -91,7 +91,7 @@ void	print_plane(t_plane *plane)
 	plane = tmp;
 }
 
-void	print_cylinder(t_cylinder *cylinder)
+static void	print_cylinder(t_cylinder *cylinder)
 {
 	t_cylinder	*tmp;
 	int			i;
@@ -115,4 +115,20 @@ void	print_cylinder(t_cylinder *cylinder)
 		cylinder = cylinder->next;
 	}
 	cylinder = tmp;
+}
+
+void	print_objs(t_objs *objs)
+{
+	if (objs->ambient)
+		print_ambient(objs->ambient);
+	if (objs->camera)
+		print_camera(objs->camera);
+	if (objs->light)
+		print_light(objs->light);
+	if (objs->sphere)
+		print_sphere(objs->sphere);
+	if (objs->plane)
+		print_plane(objs->plane);
+	if (objs->cylinder)
+		print_cylinder(objs->cylinder);
 }

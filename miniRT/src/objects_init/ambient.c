@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 09:42:43 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/25 11:06:01 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 12:06:01 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,4 @@ void	parse_ambient(t_data *data, char *line)
 	free_tab(tmp);
 	check_rgb_values(data->objs->ambient->rgb, data);
 	check_ratio(data->objs->ambient->ratio, data);
-	print_ambient(data->objs->ambient);
 }

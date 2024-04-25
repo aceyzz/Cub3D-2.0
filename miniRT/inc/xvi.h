@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:50:51 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/25 11:57:36 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/25 12:15:07 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define WHITESPACE " \t\n\v\f\r"
 
 typedef struct s_data		t_data;
-typedef struct s_obj		t_obj;
+typedef struct s_objs		t_objs;
 typedef struct s_light		t_light;
 typedef struct s_camera		t_camera;
 typedef struct s_ambient	t_ambient;
@@ -64,7 +64,11 @@ typedef struct s_parse
 // EXITTERS.C
 void					err_exit_void(char *msg);
 void					err_exit_free(char *msg, t_data *data);
+void					valid_exit(t_data *data);
+
+// FREE.C
 void					free_tab(char **tab);
+void					free_objs(t_objs *objs);
 
 // CHECK_ARGS.C
 void					check_params(int argc, char **argv);
@@ -104,11 +108,6 @@ void					parse_plane(t_data *data, char *line);
 void					parse_cylinder(t_data *data, char *line);
 
 // DEBUG.C
-void					print_camera(t_camera *camera);
-void					print_ambient(t_ambient *ambient);
-void					print_light(t_light *light);
-void					print_sphere(t_sphere *sphere);
-void					print_plane(t_plane *plane);
-void					print_cylinder(t_cylinder *cylinder);
+void					print_objs(t_objs *objs);
 
 #endif
