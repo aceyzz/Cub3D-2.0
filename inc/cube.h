@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 09:00:02 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/27 09:59:29 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/27 10:09:41 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ typedef struct s_tex
 	int		end;
 	bool	is_rgb;
 	int		rgb[3];
+	t_tex	*next;
 }			t_tex;
 
 // structure de données principales
