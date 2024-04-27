@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 09:00:02 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/27 11:42:50 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/27 23:39:07 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ typedef enum e_type
 // orientation du joueur pour t_data
 typedef enum e_ori
 {
-	NORTH = 1,
-	SOUTH,
-	WEST,
-	EAST
+	NO = 1,
+	SO,
+	WE,
+	EA
 }			t_ori;
 
 // liste chainée de toutes les textures
@@ -80,7 +80,6 @@ typedef struct s_tex
 typedef struct s_data
 {
 	// init par Chris
-	char	*filecontent;
 	char	**map;
 	char	**map_copy;
 	int		pos_x;
@@ -103,8 +102,5 @@ void		free_mlx(t_mlx *mlx);
 void		free_tab(char **tab);
 void		free_tex(t_tex *tex);
 void		free_data(t_data *data);
-
-// MAIN_GAME.C
-void		game_loop(t_data *data);
 
 #endif

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   init_raycaster.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 11:38:22 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/27 11:57:40 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/27 23:13:14 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ static void	init_player(t_data *data)
 		init_player_ns(data);
 	else
 		init_player_ew(data);
+	data->player->middle_screen = Y_RES / 2;
 	data->player->move_speed = MOVE_SPEED;
 	data->player->rota_speed = ROTA_SPEED;
 }
@@ -75,7 +76,7 @@ static void	init_keys(t_data *data)
 	data->keys->d = false;
 	data->keys->left = false;
 	data->keys->right = false;
-
+	data->keys->shift = false;
 }
 
 void	init_raycaster(t_data *data)

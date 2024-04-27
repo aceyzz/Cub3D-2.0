@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_game.c                                        :+:      :+:    :+:   */
+/*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/27 11:22:35 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/27 23:10:46 by cedmulle         ###   ########.fr       */
+/*   Created: 2024/04/27 10:01:08 by cedmulle          #+#    #+#             */
+/*   Updated: 2024/04/27 15:57:55 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-int	main_game(t_data *data)
+void	init_mlx(t_data *data)
 {
-	update_moves(data);
-	raycasting(data);
-	mlx_put_image_to_window(data->mlx->mlx, data->mlx->win,
-		data->mlx->img, 0, 0);
-	// Bonus? 
-	return (0);
+	data->mlx = malloc(sizeof(t_mlx));
+	data->mlx->mlx = mlx_init();
+	data->mlx->win = mlx_new_window(data->mlx->mlx, X_RES, Y_RES, "cub3D");
+	data->mlx->img = mlx_new_image(data->mlx->mlx, X_RES, Y_RES);
+	data->mlx->addr = mlx_get_data_addr(data->mlx->img, &data->mlx->bpp,
+			&data->mlx->len, &data->mlx->end);
+	data->mlx->bpp /= 8;
 }

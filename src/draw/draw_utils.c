@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   draw_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/27 10:01:08 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/27 11:04:02 by cedmulle         ###   ########.fr       */
+/*   Created: 2024/04/27 21:19:21 by cedmulle          #+#    #+#             */
+/*   Updated: 2024/04/27 21:47:18 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-void	init_mlx(t_data *data)
+unsigned int	rgb_to_hexa(int rgb[3])
 {
-	data->mlx = malloc(sizeof(t_mlx));
-	data->mlx->mlx = mlx_init();
-	data->mlx->win = mlx_new_window(data->mlx->mlx, X_RES, Y_RES, "cub3D");
-	data->mlx->img = mlx_new_image(data->mlx->mlx, X_RES, Y_RES);
-	data->mlx->addr = mlx_get_data_addr(data->mlx->img, &data->mlx->bpp,
-			&data->mlx->len, &data->mlx->end);
-	data->mlx->bpp /= 8;
+	return (((rgb[0] & 0xFF) << 16) + ((rgb[1] & 0xFF) << 8) + (rgb[2] & 0xFF));
+}
+
+void	my_pixel_put(t_mlx *mlx, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = mlx->addr + (y * mlx->len + x * (mlx->bpp / 8));
+	*(unsigned int *)dst = color;
 }
