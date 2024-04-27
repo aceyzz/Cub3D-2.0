@@ -6,11 +6,11 @@
 #    By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/21 20:09:31 by cedmulle          #+#    #+#              #
-#    Updated: 2024/04/24 23:01:15 by cedmulle         ###   ########.fr        #
+#    Updated: 2024/04/27 09:44:06 by cedmulle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME    = miniRT
+NAME    = cub3d
 
 SRC_DIR = ./src/
 INC_DIR = ./inc/
@@ -54,7 +54,7 @@ all: $(OBJ_DIR)
 	@echo "$(CLR)\n$(GRE)----------------------------------------\n"
 	@echo "       Executable $(NAME) created !\n"
 	@echo "----------------------------------------$(RST)\n\n"
-	@echo "$(YEL)Usage: ./miniRT [scene.rt]\n$(RST)"
+	@echo "$(YEL)Usage: ./$(NAME) [scene]\n$(RST)"
 	@echo "$(D_GRY)List of available scenes:"
 	@ls -1 scenes | sed 's/^/- scenes\//'
 	@echo "$(RST)"
@@ -74,7 +74,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)%.c
 clean:
 	@$(RM) $(OBJ_DIR)
 	@echo "$(CLR)$(D_BLU)Objects cleaned$(RST)"
-	@echo "$(D_BLU)miniRT cleaned$(RST)"
+	@echo "$(D_BLU)$(NAME) cleaned$(RST)"
 	@make clean -C ./inc/libft > /dev/null 2>&1
 	@echo "$(D_BLU)Libft cleaned\n$(RST)"
 
@@ -84,7 +84,7 @@ fclean: clean
 	@make clean -C ./inc/mlx > /dev/null 2>&1
 	@echo "$(D_RED)MLX deep cleaned$(RST)"
 	@$(RM) $(NAME) > /dev/null 2>&1
-	@echo "$(D_RED)miniRT deep cleaned\n$(RST)"
+	@echo "$(D_RED)$(NAME) deep cleaned\n$(RST)"
 
 re: fclean all
 
