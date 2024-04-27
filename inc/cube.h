@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 09:00:02 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/27 10:09:41 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/27 11:24:49 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,19 @@
 # include "mlx/mlx.h"
 
 // system includes
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include <fcntl.h>
-# include <math.h>
-# include <string.h>
 # include <errno.h>
+# include <fcntl.h>
 # include <limits.h>
+# include <math.h>
 # include <stdbool.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+# include <unistd.h>
 
 // includes by cedmulle
-# include "raycasting.h"
 # include "colors.h"
+# include "raycasting.h"
 
 // includes by chris
 // ...
@@ -49,7 +49,7 @@ typedef enum e_type
 	EAST,
 	FLOOR,
 	CEIL
-}	t_type;
+}			t_type;
 
 // orientation du joueur pour t_data
 typedef enum e_ori
@@ -58,7 +58,7 @@ typedef enum e_ori
 	SOUTH,
 	WEST,
 	EAST
-}	t_ori;
+}			t_ori;
 
 // liste chainée de toutes les textures
 // le enum sert a definir a quoi elle correspond
@@ -79,14 +79,32 @@ typedef struct s_tex
 // structure de données principales
 typedef struct s_data
 {
+	// init par Chris
 	char	*filecontent;
 	char	**map;
 	char	**map_copy;
 	int		pos_x;
 	int		pos_y;
 	t_ori	orientation;
-	t_mlx	*mlx;
 	t_tex	*tex;
+	// init par Ced
+	t_mlx	*mlx;
+	t_keys	*keys;
+	t_plyr	*player;
 }			t_data;
+
+// ERROR_EXIT.C
+int			error_exit(char *errmsg, char *func, t_data *data);
+int			exit_game(t_data *data);
+
+// FREE.C
+void		free_ptr(void *ptr);
+void		free_mlx(t_mlx *mlx);
+void		free_tab(char **tab);
+void		free_tex(t_tex *tex);
+void		free_data(t_data *data);
+
+// MAIN_GAME.C
+void		game_loop(t_data *data);
 
 #endif

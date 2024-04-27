@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 08:59:51 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/27 11:01:15 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/27 11:33:22 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,15 @@ int	main(int argc, char **argv)
 
 	// check_args(argc, argv);// Chris -> check si argument c'est bon
 	// parse_data(&data, argv[1]);// Chris -> parse les données + checks
-	// init_mlx(&data);// ced
-	// init_textures(&data);// ced
+	init_mlx(&data);// ced
+	// init_textures(&data);// Chris -> stocke les textures dans (tex)
 	// init_raycaster(&data);// ced
-	// mlx_hook(data.mlx->win, 2, 1L << 0, key_press, &data);// ced
-	// mlx_hook(data.mlx->win, 3, 1L << 1, key_release, &data);// ced
-	// mlx_hook(data.mlx->win, 17, 1L << 17, exit_game, &data);// ced
-	// mlx_loop_hook(data.mlx->mlx, game_loop, &data);// ced
-	// mlx_loop(data.mlx->mlx);// ced
-	// exit_game(&data);// ced
+	mlx_mouse_move(data.mlx->win, X_RES / 2, Y_RES / 2);
+	mlx_hook(data.mlx->win, 2, 1L << 0, &keypress, &data);
+	mlx_hook(data.mlx->win, 3, 1L << 1, &keyrelease, &data);
+	mlx_hook(data.mlx->win, 17, 1L << 17, exit_game, &data);
+	mlx_loop_hook(data.mlx->mlx, main_game, &data);// Boucle principale
+	mlx_loop(data.mlx->mlx);
+	exit_game(&data);
 	return (0);
 }
