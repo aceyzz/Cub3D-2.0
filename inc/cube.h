@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 09:00:02 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/27 09:32:25 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/27 09:59:29 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@
 # define Y_RES 720
 
 // type de textures pour la liste chainée t_tex
-enum	e_type
+typedef enum e_type
 {
 	NORTH = 1,
 	SOUTH,
@@ -49,22 +49,22 @@ enum	e_type
 	EAST,
 	FLOOR,
 	CEIL
-};
+}	t_type;
 
 // orientation du joueur pour t_data
-enum	e_ori
+typedef enum e_ori
 {
 	NORTH = 1,
 	SOUTH,
 	WEST,
 	EAST
-};
+}	t_ori;
 
 // liste chainée de toutes les textures
 // le enum sert a definir a quoi elle correspond
 typedef struct s_tex
 {
-	e_type	type;
+	t_type	type;
 	char	*path;
 	void	*img;
 	char	*addr;
@@ -83,7 +83,7 @@ typedef struct s_data
 	char	**map_copy;
 	int		pos_x;
 	int		pos_y;
-	e_ori	orientation;
+	t_ori	orientation;
 	t_mlx	*mlx;
 	t_tex	*tex;
 }			t_data;
