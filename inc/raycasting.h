@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 09:20:04 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/27 11:33:33 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/27 12:00:20 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 # define K_LEFT 123
 # define K_RIGHT 124
 # define K_ESC 53
+
+# define MOVE_SPEED 0.05
+# define ROTA_SPEED 0.05
 
 typedef struct s_mlx
 {
@@ -42,7 +45,6 @@ typedef struct s_keys
 	bool	d;
 	bool	left;
 	bool	right;
-	bool	esc;
 }			t_keys;
 
 typedef struct s_ray
@@ -73,22 +75,28 @@ typedef struct s_plyr
 	double	pos_x;
 	double	pos_y;
 	double	pos_z;
+	double	middle_screen;
 	double	dir_x;
 	double	dir_y;
 	double	plane_x;
 	double	plane_y;
 	double	move_speed;
-	double	rot_speed;
+	double	rota_speed;
 }			t_plyr;
 
-// MLX.C
+/************************* MLX *******************/
 void		init_mlx(t_data *data);
 
+
+/********************* MOVE_ROTA *****************/
 // KEYS.C
 int			keyrelease(int keys, t_data *data);
 int			keypress(int keys, t_data *data);
 
+/********************** RAYCAST ******************/
 // MAIN_GAME.C
 int			main_game(t_data *data);
+// INIT.C
+void		init_raycaster(t_data *data);
 
 #endif
