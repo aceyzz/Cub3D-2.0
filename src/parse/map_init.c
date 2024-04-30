@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waziz <waziz@student.42lausanne.ch>        +#+  +:+       +#+        */
+/*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 21:22:19 by waziz             #+#    #+#             */
-/*   Updated: 2024/04/30 15:18:46 by waziz            ###   ########.fr       */
+/*   Updated: 2024/04/30 20:35:42 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,7 @@
 
 char	**error_init(char *errmsg, char *func, t_data *data)
 {
-	ft_putstr_fd("Error: ", 2);
-	ft_putstr_fd(errmsg, 2);
-	if (func)
-	{
-		ft_putstr_fd(" in function ", 2);
-		ft_putstr_fd(func, 2);
-	}
-	ft_putstr_fd("\n", 2);
-	if (data)
-		free_data(data);
-	exit(EXIT_FAILURE);
+	error_exit(errmsg, func, data);
 	return (NULL);
 }
 
@@ -43,7 +33,10 @@ char	**init_map(t_data *data, char *filename)
 		if (is_void(file[t--]))
 			break ;
 	if (t < 6)
+	{
+		free_tab(file);
 		return (error_init("Non-compliant file", "parsing/map/2:1", data));
+	}
 	map = malloc((ft_tablen(file) - t) * sizeof(char *));
 	if (!map)
 		return (error_init("Allocated Memory Failed", "parsing/map/2:1", data));

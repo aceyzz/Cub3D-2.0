@@ -6,13 +6,20 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 22:11:18 by waziz             #+#    #+#             */
-/*   Updated: 2024/04/30 17:37:49 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/30 21:21:36 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-int	fc_atoi(t_parse *parse, char **ws, char *s)
+static void	invalid_rgb(t_parse *parse, char **ws, char **tab)
+{
+	free_tab(ws);
+	free_tab(tab);
+	error_exit("Invalid rgb", "parsing/params/1:3", parse->data);
+}
+
+int	fc_atoi(t_parse *parse, char **ws, char *s, char **tab)
 {
 	int	i;
 	int	res;
@@ -25,11 +32,7 @@ int	fc_atoi(t_parse *parse, char **ws, char *s)
 		i++;
 	}
 	if (res < 0 || res > 255)
-	{
-		free_tab(ws);
-		return (error_exit("RGB number invalid", "parsing/params/1:1",
-				parse->data));
-	}
+		invalid_rgb(parse, ws, tab);
 	return (res);
 }
 
@@ -54,26 +57,16 @@ int	fc_frgb(t_parse *parse, char **ws)
 
 	tab = ft_split(ws[1], ',');
 	if (!tab || ft_tablen(tab) != 3)
-	{
-		free_tab(ws);
-		if (tab)
-			free_tab(tab);
-		return (error_exit("Invalid rgb", "parsing/params/1:3", parse->data));
-	}
+		invalid_rgb(parse, ws, tab);
 	t = -1;
 	while (tab[++t])
 	{
 		if (!only_digit(tab[t]))
-		{
-			free_tab(ws);
-			free_tab(tab);
-			return (error_exit("Invalid rgb", "parsing/params/1:3",
-					parse->data));
-		}
+			invalid_rgb(parse, ws, tab);
 	}
-	parse->frgb[0] = fc_atoi(parse, ws, tab[0]);
-	parse->frgb[1] = fc_atoi(parse, ws, tab[1]);
-	parse->frgb[2] = fc_atoi(parse, ws, tab[2]);
+	parse->frgb[0] = fc_atoi(parse, ws, tab[0], tab);
+	parse->frgb[1] = fc_atoi(parse, ws, tab[1], tab);
+	parse->frgb[2] = fc_atoi(parse, ws, tab[2], tab);
 	free(tab);
 	return (1);
 }
@@ -85,26 +78,16 @@ int	fc_crgb(t_parse *parse, char **ws)
 
 	tab = ft_split(ws[1], ',');
 	if (!tab || ft_tablen(tab) != 3)
-	{
-		free_tab(ws);
-		if (tab)
-			free_tab(tab);
-		return (error_exit("Invalid rgb", "parsing/params/1:3", parse->data));
-	}
+		invalid_rgb(parse, ws, tab);
 	t = -1;
 	while (tab[++t])
 	{
 		if (!only_digit(tab[t]))
-		{
-			free_tab(ws);
-			free_tab(tab);
-			return (error_exit("Invalid rgb", "parsing/params/1:3",
-					parse->data));
-		}
+			invalid_rgb(parse, ws, tab);
 	}
-	parse->crgb[0] = fc_atoi(parse, ws, tab[0]);
-	parse->crgb[1] = fc_atoi(parse, ws, tab[1]);
-	parse->crgb[2] = fc_atoi(parse, ws, tab[2]);
+	parse->crgb[0] = fc_atoi(parse, ws, tab[0], tab);
+	parse->crgb[1] = fc_atoi(parse, ws, tab[1], tab);
+	parse->crgb[2] = fc_atoi(parse, ws, tab[2], tab);
 	free(tab);
 	return (1);
 }

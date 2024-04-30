@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 21:23:31 by waziz             #+#    #+#             */
-/*   Updated: 2024/04/30 17:35:58 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/30 21:12:06 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ char					**parse_file(t_data *data, char *filename);
 /*////////////////////////////////////////////////////////////////////////////*/
 
 // fc_utils.c
-int						fc_atoi(t_parse *parse, char **ws, char *s);
+int						fc_atoi(t_parse *parse, char **ws, char *s, char **tab);
 int						only_digit(char *s);
 int						fc_frgb(t_parse *parse, char **ws);
 int						fc_crgb(t_parse *parse, char **ws);

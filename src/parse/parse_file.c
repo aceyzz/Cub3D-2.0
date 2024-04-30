@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 09:42:43 by waziz             #+#    #+#             */
-/*   Updated: 2024/04/30 17:18:53 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/30 20:32:45 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,9 @@ char	**parse_file(t_data *data, char *filename)
 	free(join_file);
 	close_file(data, fd);
 	if (!is_valid(file))
+	{
+		free_tab(file);
 		return (error_init("Invalid File", "parsing/parse/1:5", data));
+	}
 	return (file);
 }

@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 10:08:55 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/30 17:32:44 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/30 21:13:25 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 void	free_ptr(void *ptr)
 {
 	if (ptr)
+	{
 		free(ptr);
+		ptr = NULL;
+	}
 }
 
 void	free_mlx(t_mlx *mlx)
