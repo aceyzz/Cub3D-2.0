@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 09:20:04 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/27 23:21:34 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/30 14:22:04 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 # define RAYCASTING_H
 
 # define FOV 60
-# define COLLISION 0.4
+# define COLLISION 0.8
+
+# define BONUS 1
 
 # define K_W 13
 # define K_A 0
@@ -24,157 +26,150 @@
 # define K_RIGHT 124
 # define K_ESC 53
 # define K_SHFT 257
+# define K_SPACE 49
 
 # define TSIZE 256
 
 # define MOVE_SPEED 0.05
-# define RUN_SPEED 0.08
+# define RUN_SPEED 0.09
 # define ROTA_SPEED 0.05
 
 typedef struct s_tex	t_tex;
 typedef struct s_data	t_data;
-typedef struct s_mlx	t_mlx;
-typedef struct s_keys	t_keys;
-typedef struct s_ray	t_ray;
-typedef struct s_plyr	t_plyr;
-typedef struct s_calc	t_calc;
-typedef struct s_flcl	t_flcl;
 typedef enum e_type		t_type;
 
 typedef struct s_mlx
 {
-	void		*mlx;
-	void		*win;
-	void		*img;
-	char		*addr;
-	int			bpp;
-	int			len;
-	int			end;
-}				t_mlx;
+	void				*mlx;
+	void				*win;
+	void				*img;
+	char				*addr;
+	int					bpp;
+	int					len;
+	int					end;
+}						t_mlx;
 
 typedef struct s_keys
 {
-	bool		w;
-	bool		a;
-	bool		s;
-	bool		d;
-	bool		left;
-	bool		right;
-	bool		shift;
-}				t_keys;
+	bool				w;
+	bool				a;
+	bool				s;
+	bool				d;
+	bool				left;
+	bool				right;
+	bool				shift;
+}						t_keys;
 
 typedef struct s_ray
 {
-	double		cam_x;
-	double		pos_x;
-	double		pos_y;
-	double		dir_x;
-	double		dir_y;
-	double		delta_x;
-	double		delta_y;
-	double		side_x;
-	double		side_y;
-	double		perp_wall_dist;
-	int			hit;
-	int			map_x;
-	int			map_y;
-	int			step_x;
-	int			step_y;
-	int			side;
-	int			line_height;
-	int			draw_start;
-	int			draw_end;
-}				t_ray;
+	double				cam_x;
+	double				pos_x;
+	double				pos_y;
+	double				dir_x;
+	double				dir_y;
+	double				delta_x;
+	double				delta_y;
+	double				side_x;
+	double				side_y;
+	double				perp_wall_dist;
+	int					hit;
+	int					map_x;
+	int					map_y;
+	int					step_x;
+	int					step_y;
+	int					side;
+	int					line_height;
+	int					draw_start;
+	int					draw_end;
+}						t_ray;
 
 typedef struct s_plyr
 {
-	double		pos_x;
-	double		pos_y;
-	double		pos_z;
-	double		middle_screen;
-	double		dir_x;
-	double		dir_y;
-	double		plane_x;
-	double		plane_y;
-	double		move_speed;
-	double		rota_speed;
-}				t_plyr;
+	double				pos_x;
+	double				pos_y;
+	double				pos_z;
+	double				middle_screen;
+	double				dir_x;
+	double				dir_y;
+	double				plane_x;
+	double				plane_y;
+	double				move_speed;
+	double				rota_speed;
+	bool				jumping;
+	double				velocity;
+}						t_plyr;
 
 typedef struct s_calc
 {
-	int			x;
-	int			y;
-	int			y_rev;
-	double		dst_wall;
-	double		dst_floor;
-}				t_calc;
+	int					x;
+	int					y;
+	int					y_rev;
+	double				dst_wall;
+	double				dst_floor;
+}						t_calc;
 
 typedef struct s_flcl
 {
-	double		dir_x_a;
-	double		dir_y_a;
-	double		dir_x_b;
-	double		dir_y_b;
-	double		dir_row;
-	double		step_x;
-	double		step_y;
-	double		floor_x;
-	double		floor_y;
-	double		dist_wall;
-}				t_flcl;
+	double				dir_x_a;
+	double				dir_y_a;
+	double				dir_x_b;
+	double				dir_y_b;
+	double				dir_row;
+	double				step_x;
+	double				step_y;
+	double				floor_x;
+	double				floor_y;
+	double				dist_wall;
+}						t_flcl;
 
 // MLX
 /* init.c */
-void			init_mlx(t_data *data);
+void					init_mlx(t_data *data);
 
 /// MOVE_ROTA
 /* keys.c */
-int				keyrelease(int keys, t_data *data);
-int				keypress(int keys, t_data *data);
+int						keyrelease(int keys, t_data *data);
+int						keypress(int keys, t_data *data);
 
 // LOGIC
 /* main_moves.c */
-void			update_moves(t_data *data);
+void					update_moves(t_data *data);
 /* moves.c */
-void			move_front(t_data *data);
-void			move_back(t_data *data);
-void			move_right(t_data *data);
-void			move_left(t_data *data);
+void					move_front(t_data *data);
+void					move_back(t_data *data);
+void					move_right(t_data *data);
+void					move_left(t_data *data);
 /* rotate.c */
-void			rota_left(t_data *data);
-void			rota_right(t_data *data);
+void					rota_left(t_data *data);
+void					rota_right(t_data *data);
 /* moves_utils.c */
-void			normalize_speed(double *x, double *y);
-bool			collision(char **map, double new_x, double new_y);
-double			cal_new_pos(double pos, double move_speed, double new_pos);
-double			cal_new_dir(double x, double y, double rota_speed, char sign);
+void					normalize_speed(double *x, double *y);
+bool					collision(char **map, double new_x, double new_y);
+double					cal_new_pos(double pos, double move_speed,
+							double new_pos);
 
 // RAYCAST
 /* main_game.c */
-int				main_game(t_data *data);
-/* main_raycast.c */
-void			raycasting(t_data *data);
+int						main_game(t_data *data);
 /* init_raycaster.c */
-void			init_raycaster(t_data *data);
-/* init_rays.c */
-void			init_ray(t_data *data, t_ray *ray, int x);
-/* setters. */
-void			set_step(t_ray *ray);
-void			set_draw_range(t_data *data, t_ray *ray);
+void					init_raycaster(t_data *data);
+/* raycaster.c */
+void					set_step(t_data *data, t_ray *ray);
+void					calc_wall_height(t_data *data, t_ray *ray);
+void					init_ray(t_data *data, t_ray *ray, int x);
 
 // DRAW
-/* draw.c */
-void			draw_wall(t_data *data, t_ray *ray, int x);
-/* floor_ceil.c */
-void			draw_floor_sky(t_data *data, t_ray *ray, int x);
-/* textures.c */
-int				calc_tex_x(t_data *data, t_ray *ray);
-int				calc_tex_y(t_ray *ray, int y);
-t_tex			*which_tex(t_data *data, t_ray *ray);
-unsigned int	get_tex_color(t_data *data, t_ray *ray, int tex_x, int tex_y);
-t_tex			*get_tex(t_tex *tex, t_type type);
+/* draw_rays.c */
+t_tex					*get_texture(t_data *data, t_type orientation);
+void					draw_wall(t_data *data, t_ray *ray, int x);
+/* draw_fc.c */
+void					draw_fc(t_data *data, t_ray *ray, int x);
 /* draw_utils.c */
-void			my_pixel_put(t_mlx *mlx, int x, int y, int color);
-unsigned int	rgb_to_hexa(int rgb[3]);
+void					my_pixel_put(t_mlx *mlx, int x, int y, int color);
+unsigned int			rgb_to_hexa(int rgb[3]);
+
+// BONUS
+/* mouse.c */
+void					handle_mouse(t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 10:08:55 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/27 23:20:38 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/30 11:31:55 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,6 @@ void	free_data(t_data *data)
 	free_mlx(data->mlx);
 	if (data->map)
 		free_tab(data->map);
-	if (data->map_copy)
-		free_tab(data->map_copy);
 	free_tex(data->tex);
 	free_ptr(data->player);
 	free_ptr(data->keys);

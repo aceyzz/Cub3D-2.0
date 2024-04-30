@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.c                                             :+:      :+:    :+:   */
+/*   mouse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/27 17:00:11 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/27 23:21:37 by cedmulle         ###   ########.fr       */
+/*   Created: 2024/04/28 12:16:06 by cedmulle          #+#    #+#             */
+/*   Updated: 2024/04/30 14:00:29 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-void	draw_wall(t_data *data, t_ray *ray, int x)
+void	handle_mouse(t_data *data)
 {
-	unsigned int	color;
-	int				y;
-	int				tex_y;
-	int				tex_x;
-	int				end;
+	int	dx;
+	int	dy;
 
-	y = ray->draw_start;
-	end = ray->draw_end;
-	while (y < end)
-	{
-		tex_y = calc_tex_y(ray, y);
-		tex_x = calc_tex_x(data, ray);
-		color = get_tex_color(data, ray, tex_x, tex_y);
-		// transform the color to apply fog HERE
-		my_pixel_put(data->mlx, x, y, color);
-		y++;
-	}
+	mlx_mouse_get_pos(data->mlx->win, &dx, &dy);
+	if (dx < X_RES / 2 - 10)
+		rota_left(data);
+	else if (dx > X_RES / 2 + 10)
+		rota_right(data);
+	if (dy < Y_RES / 2 - 10 || dy > Y_RES / 2 + 10
+		|| dx < X_RES / 2 - 10 || dx > X_RES / 2 + 10)
+		mlx_mouse_move(data->mlx->win, X_RES / 2, Y_RES / 2);
 }

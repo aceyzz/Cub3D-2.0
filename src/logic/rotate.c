@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:35:17 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/27 23:17:59 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/30 13:07:53 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ void	rota_left(t_data *data)
 
 	rota_speed = data->player->rota_speed;
 	old_dir_x = data->player->dir_x;
+	data->player->dir_x = data->player->dir_x * cos(-rota_speed)
+		- data->player->dir_y * sin(-rota_speed);
+	data->player->dir_y = old_dir_x * sin(-rota_speed)
+		+ data->player->dir_y * cos(-rota_speed);
 	old_plane_x = data->player->plane_x;
-	data->player->dir_x = cal_new_dir(data->player->dir_x,
-			data->player->dir_y, -rota_speed, '-');
-	data->player->dir_y = cal_new_dir(old_dir_x,
-			data->player->dir_y, -rota_speed, '+');
-	data->player->plane_x = cal_new_dir(data->player->plane_x,
-			data->player->plane_y, -rota_speed, '-');
-	data->player->plane_y = cal_new_dir(old_plane_x,
-			data->player->plane_y, -rota_speed, '+');
+	data->player->plane_x = data->player->plane_x * cos(-rota_speed)
+		- data->player->plane_y * sin(-rota_speed);
+	data->player->plane_y = old_plane_x * sin(-rota_speed)
+		+ data->player->plane_y * cos(-rota_speed);
 }
 
 void	rota_right(t_data *data)
@@ -39,13 +39,13 @@ void	rota_right(t_data *data)
 
 	rota_speed = data->player->rota_speed;
 	old_dir_x = data->player->dir_x;
+	data->player->dir_x = data->player->dir_x * cos(rota_speed)
+		- data->player->dir_y * sin(rota_speed);
+	data->player->dir_y = old_dir_x * sin(rota_speed)
+		+ data->player->dir_y * cos(rota_speed);
 	old_plane_x = data->player->plane_x;
-	data->player->dir_x = cal_new_dir(data->player->dir_x,
-			data->player->dir_y, rota_speed, '-');
-	data->player->dir_y = cal_new_dir(old_dir_x,
-			data->player->dir_y, rota_speed, '+');
-	data->player->plane_x = cal_new_dir(data->player->plane_x,
-			data->player->plane_y, rota_speed, '-');
-	data->player->plane_y = cal_new_dir(old_plane_x,
-			data->player->plane_y, rota_speed, '+');
+	data->player->plane_x = data->player->plane_x * cos(rota_speed)
+		- data->player->plane_y * sin(rota_speed);
+	data->player->plane_y = old_plane_x * sin(rota_speed)
+		+ data->player->plane_y * cos(rota_speed);
 }

@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 09:00:02 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/27 23:39:07 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/30 14:30:56 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # include "raycasting.h"
 
 // includes by chris
-// ...
+// # include "parsing.h"
 
 // paramètres
 # define DEBUG 1
@@ -81,7 +81,6 @@ typedef struct s_data
 {
 	// init par Chris
 	char	**map;
-	char	**map_copy;
 	int		pos_x;
 	int		pos_y;
 	t_ori	orientation;
