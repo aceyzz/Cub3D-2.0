@@ -6,17 +6,16 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 11:22:35 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/30 14:02:20 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/30 22:53:53 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
+// ADD MINIMAP & SOUNDS
 static void	main_bonus(t_data *data)
 {
 	handle_mouse(data);
-	// minimap(data);
-	// soundtrack(data);
 }
 
 static void	dda(t_data *data, t_ray *ray)

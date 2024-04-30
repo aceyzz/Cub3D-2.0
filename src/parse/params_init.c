@@ -6,11 +6,21 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 21:02:37 by waziz             #+#    #+#             */
-/*   Updated: 2024/04/30 20:52:06 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/30 22:48:32 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
+
+static void	free_from_index(char **tab, int index)
+{
+	while (tab[index])
+	{
+		free(tab[index]);
+		tab[index] = NULL;
+		index++;
+	}
+}
 
 char	**init_params(t_data *data, char *filename)
 {
@@ -25,11 +35,7 @@ char	**init_params(t_data *data, char *filename)
 	while (t >= 0)
 		if (is_void(file[t--]))
 			break ;
-	while (file[++t])
-	{
-		free(file[t]);
-		file[t] = NULL;
-	}
+	free_from_index(file, t + 1);
 	params = ft_tabdup(file);
 	free_tab(file);
 	if (!params)

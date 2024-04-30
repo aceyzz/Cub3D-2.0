@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 14:21:55 by waziz             #+#    #+#             */
-/*   Updated: 2024/04/30 20:48:05 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/30 22:46:29 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,13 +122,11 @@ int	fifth_check(t_parse *parse)
 			if (fd == -1)
 			{
 				free_tab(ws);
-				return (error_exit("Invalid file path", "parsing/params/3:5",
-						parse->data));
+				error_exit("Invalid file path", "params/3:5", parse->data);
 			}
 			free_tab(ws);
 			if (close(fd) == -1)
-				return (error_exit("Closing file failed", "parsing/params/3:5",
-						parse->data));
+				error_exit("Closing file failed", "parsing/3:5", parse->data);
 		}
 		else
 			free_tab(ws);

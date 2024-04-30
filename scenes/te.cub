@@ -1,6 +1,6 @@
 
 
-NO ./img/debug/nord.xpm
+NO             ./img/debug/nord.xpm
 
 
 SO ./img/debug/sud.xpm
@@ -16,7 +16,7 @@ EA ./img/debug/est.xpm
 
                                
 
-C 225,30,256
+C 225,30,25
 
 
 
