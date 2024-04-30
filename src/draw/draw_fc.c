@@ -27,9 +27,9 @@ static unsigned int	get_tex_color_fc(t_data *data, int x, int y, t_type type)
 
 static void	parse_n_draw_floor(t_data *data, int x, int y)
 {
-	t_flcl			fc;
-	t_calc			c;
-	double			p;
+	t_flcl	fc;
+	t_calc	c;
+	double	p;
 
 	fc.dir_x_a = data->player->dir_x - data->player->plane_x;
 	fc.dir_y_a = data->player->dir_y - data->player->plane_y;
@@ -50,9 +50,9 @@ static void	parse_n_draw_floor(t_data *data, int x, int y)
 
 static void	parse_n_draw_sky(t_data *data, int x, int y)
 {
-	t_flcl			fc;
-	t_calc			calc;
-	double			p;
+	t_flcl	fc;
+	t_calc	calc;
+	double	p;
 
 	fc.dir_x_a = data->player->dir_x - data->player->plane_x;
 	fc.dir_y_a = data->player->dir_y - data->player->plane_y;

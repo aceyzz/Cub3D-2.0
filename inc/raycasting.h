@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 09:20:04 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/30 14:22:04 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/30 17:33:44 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ typedef struct s_flcl
 // MLX
 /* init.c */
 void					init_mlx(t_data *data);
+void					init_imgs(t_data *data);
 
 /// MOVE_ROTA
 /* keys.c */

@@ -22,7 +22,7 @@ void	handle_mouse(t_data *data)
 		rota_left(data);
 	else if (dx > X_RES / 2 + 10)
 		rota_right(data);
-	if (dy < Y_RES / 2 - 10 || dy > Y_RES / 2 + 10
-		|| dx < X_RES / 2 - 10 || dx > X_RES / 2 + 10)
+	if (dy < Y_RES / 2 - 10 || dy > Y_RES / 2 + 10 || dx < X_RES / 2 - 10
+		|| dx > X_RES / 2 + 10)
 		mlx_mouse_move(data->mlx->win, X_RES / 2, Y_RES / 2);
 }

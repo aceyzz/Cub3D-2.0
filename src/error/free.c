@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 10:08:55 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/30 11:31:55 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/30 17:32:44 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,16 @@ void	free_tex(t_tex *tex)
 
 void	free_data(t_data *data)
 {
-	free_mlx(data->mlx);
+	if (data->mlx)
+		free_mlx(data->mlx);
 	if (data->map)
 		free_tab(data->map);
-	free_tex(data->tex);
-	free_ptr(data->player);
-	free_ptr(data->keys);
+	if (data->parse)
+		free_parse(data->parse);
+	if (data->tex)
+		free_tex(data->tex);
+	if (data->player)
+		free_ptr(data->player);
+	if (data->keys)
+		free_ptr(data->keys);
 }

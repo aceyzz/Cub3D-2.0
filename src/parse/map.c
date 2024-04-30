@@ -1,42 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   moves_utils.c                                      :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/27 13:47:02 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/30 13:02:13 by cedmulle         ###   ########.fr       */
+/*   Created: 2024/04/29 20:52:51 by waziz             #+#    #+#             */
+/*   Updated: 2024/04/30 17:41:17 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-void	normalize_speed(double *x, double *y)
+int	valid_map(t_parse *parse)
 {
-	double	len;
-
-	len = sqrt(*x * *x + *y * *y);
-	if (len > 0)
-	{
-		*x /= len;
-		*y /= len;
-	}
-}
-
-bool	collision(char **map, double new_x, double new_y)
-{
-	int	x;
-	int	y;
-
-	x = (int)(new_x);
-	y = (int)(new_y);
-	if (map[y][x] == '1')
-		return (true);
-	return (false);
-}
-
-double	cal_new_pos(double pos, double move_speed, double new_pos)
-{
-	return (pos + move_speed * new_pos);
+	if (check_one(parse))
+		if (check_two(parse))
+			if (check_three(parse))
+				if (check_four(parse))
+					return (1);
+	return (0);
 }

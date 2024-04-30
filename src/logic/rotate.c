@@ -22,8 +22,8 @@ void	rota_left(t_data *data)
 	old_dir_x = data->player->dir_x;
 	data->player->dir_x = data->player->dir_x * cos(-rota_speed)
 		- data->player->dir_y * sin(-rota_speed);
-	data->player->dir_y = old_dir_x * sin(-rota_speed)
-		+ data->player->dir_y * cos(-rota_speed);
+	data->player->dir_y = old_dir_x * sin(-rota_speed) + data->player->dir_y
+		* cos(-rota_speed);
 	old_plane_x = data->player->plane_x;
 	data->player->plane_x = data->player->plane_x * cos(-rota_speed)
 		- data->player->plane_y * sin(-rota_speed);
@@ -41,8 +41,8 @@ void	rota_right(t_data *data)
 	old_dir_x = data->player->dir_x;
 	data->player->dir_x = data->player->dir_x * cos(rota_speed)
 		- data->player->dir_y * sin(rota_speed);
-	data->player->dir_y = old_dir_x * sin(rota_speed)
-		+ data->player->dir_y * cos(rota_speed);
+	data->player->dir_y = old_dir_x * sin(rota_speed) + data->player->dir_y
+		* cos(rota_speed);
 	old_plane_x = data->player->plane_x;
 	data->player->plane_x = data->player->plane_x * cos(rota_speed)
 		- data->player->plane_y * sin(rota_speed);

@@ -34,8 +34,8 @@ static int	calc_tex_x(t_data *data, t_ray *ray)
 		wall_x = data->player->pos_x + ray->perp_wall_dist * ray->dir_x;
 	wall_x -= floor(wall_x);
 	tex_x = (int)(wall_x * (double)TSIZE);
-	if ((ray->side == 0 && ray->dir_x > 0)
-		|| (ray->side == 1 && ray->dir_y < 0))
+	if ((ray->side == 0 && ray->dir_x > 0) || (ray->side == 1
+			&& ray->dir_y < 0))
 		tex_x = TSIZE - tex_x - 1;
 	return (tex_x);
 }

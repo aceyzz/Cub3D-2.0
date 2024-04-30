@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 09:00:02 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/30 14:30:56 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/30 17:33:40 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # include "raycasting.h"
 
 // includes by chris
-// # include "parsing.h"
+# include "parsing.h"
 
 // paramètres
 # define DEBUG 1
@@ -85,6 +85,7 @@ typedef struct s_data
 	int		pos_y;
 	t_ori	orientation;
 	t_tex	*tex;
+	t_parse	*parse;
 	// init par Ced
 	t_mlx	*mlx;
 	t_keys	*keys;

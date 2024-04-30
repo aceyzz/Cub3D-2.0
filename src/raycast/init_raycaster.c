@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 11:38:22 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/27 23:13:14 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/30 16:57:00 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,4 @@ void	init_raycaster(t_data *data)
 {
 	init_player(data);
 	init_keys(data);
-	init_player(data);
 }
