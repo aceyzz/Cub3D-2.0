@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 08:59:51 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/30 17:43:33 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/30 17:54:16 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		return (printf("%sError: Invalid number of arguments%s\n", REDD, RST));
 	init_data(&data);
-	init_mlx(&data);
 	ft_parsing(&data, argv[1]);
+	init_mlx(&data);
 	init_raycaster(&data);
 	init_imgs(&data);
 	mlx_mouse_move(data.mlx->win, X_RES / 2, Y_RES / 2);
