@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 09:20:04 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/30 17:33:44 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/30 23:01:17 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define RAYCASTING_H
 
 # define FOV 60
-# define COLLISION 0.8
+# define COLLISION 0.3
 
 # define BONUS 1
 
@@ -30,8 +30,8 @@
 
 # define TSIZE 256
 
-# define MOVE_SPEED 0.05
-# define RUN_SPEED 0.09
+# define MOVE_SPEED 0.04
+# define RUN_SPEED 0.08
 # define ROTA_SPEED 0.05
 
 typedef struct s_tex	t_tex;
