@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fc.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
+/*   By: waziz <waziz@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 20:55:09 by waziz             #+#    #+#             */
-/*   Updated: 2024/04/30 21:11:42 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/30 23:15:45 by waziz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,12 @@ static int	check_path(t_parse *parse, char **ws)
 	{
 		printf("file path : %s\n", ws[1]);
 		free_tab(ws);
-		return (error_exit("Invalid file path", "parsing/params/2:1",
-				parse->data));
+		return (error_exit("Invalid file path", NULL, parse->data));
 	}
 	if (close(fd) == -1)
 	{
 		free_tab(ws);
-		return (error_exit("Closing file failed", "parsing/params/2:1",
-				parse->data));
+		return (error_exit("Closing file failed", NULL, parse->data));
 	}
 	return (1);
 }
@@ -108,8 +106,7 @@ int	check_last(t_parse *parse)
 		t++;
 	}
 	if (parse->check->f != 1 || parse->check->c != 1)
-		return (error_exit("Similar setting detected", "parsing/params/2:4",
-				parse->data));
+		return (error_exit("Similar setting detected", NULL, parse->data));
 	check_fextension(parse);
 	check_cextension(parse);
 	return (1);

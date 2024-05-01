@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   init_parse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
+/*   By: waziz <waziz@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 20:51:37 by waziz             #+#    #+#             */
-/*   Updated: 2024/04/30 17:15:33 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/30 23:15:45 by waziz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_parse	*parse_init(t_data *data)
 
 	parse = malloc(sizeof(t_parse));
 	if (!parse)
-		error_exit("Malloc failed", "parse/init:2", NULL);
+		error_exit("Malloc failed", NULL, NULL);
 	parse->params = NULL;
 	parse->map = NULL;
 	parse->north = NULL;

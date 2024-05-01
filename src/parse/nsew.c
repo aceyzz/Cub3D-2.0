@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   nsew.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
+/*   By: waziz <waziz@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 14:21:55 by waziz             #+#    #+#             */
-/*   Updated: 2024/04/30 22:46:29 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/05/01 11:54:01 by waziz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,7 @@ int	fourth_check(t_parse *parse)
 	}
 	if (parse->check->no != 1 || parse->check->so != 1 || parse->check->ea != 1
 		|| parse->check->we != 1)
-		return (error_exit("Similar setting detected", "parsing/params/3:4",
-				parse->data));
+		return (error_exit("Similar setting detected", NULL, parse->data));
 	return (1);
 }
 
@@ -122,11 +121,11 @@ int	fifth_check(t_parse *parse)
 			if (fd == -1)
 			{
 				free_tab(ws);
-				error_exit("Invalid file path", "params/3:5", parse->data);
+				error_exit("Invalid file path", NULL, parse->data);
 			}
 			free_tab(ws);
 			if (close(fd) == -1)
-				error_exit("Closing file failed", "parsing/3:5", parse->data);
+				error_exit("Closing file failed", NULL, parse->data);
 		}
 		else
 			free_tab(ws);

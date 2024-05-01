@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
+/*   By: waziz <waziz@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 22:24:26 by waziz             #+#    #+#             */
-/*   Updated: 2024/04/30 17:36:27 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/30 23:15:45 by waziz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ static int	check_file(t_data *data, char *file)
 
 	(void)data;
 	if (ft_strlen(file) < 4)
-		return (error_exit("Invalid argv[1]", "parsing/1:1", NULL));
+		return (error_exit("Invalid argv[1]", NULL, NULL));
 	i = ft_strlen(file) - 1;
 	if (file[i] != 'b' || file[i - 1] != 'u' || file[i - 2] != 'c' || file[i
 			- 3] != '.')
-		return (error_exit("Only extension '.cub'", "parsing/1:1", NULL));
+		return (error_exit("Only extension '.cub'", NULL, NULL));
 	return (1);
 }
 

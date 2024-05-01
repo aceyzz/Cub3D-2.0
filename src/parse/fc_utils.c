@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fc_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
+/*   By: waziz <waziz@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 22:11:18 by waziz             #+#    #+#             */
-/*   Updated: 2024/04/30 22:44:07 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/05/01 11:45:32 by waziz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	check_rgb_vals(t_parse *parse, int *rgb)
 	while (++i < 3)
 	{
 		if (rgb[i] < 0 || rgb[i] > 255)
-			error_exit("Invalid rgb", "parsing/params/1:3", parse->data);
+			error_exit("Invalid rgb", NULL, parse->data);
 	}
 }
 
@@ -64,13 +64,13 @@ int	fc_crgb(t_parse *parse, char **ws)
 	{
 		free_tab(tab);
 		free_tab(ws);
-		error_exit("Invalid rgb", "parsing/params/1:3", parse->data);
+		error_exit("Invalid rgb", NULL, parse->data);
 	}
 	if (!only_digit(tab[0]) || !only_digit(tab[1]) || !only_digit(tab[2]))
 	{
 		free_tab(tab);
 		free_tab(ws);
-		error_exit("Invalid rgb", "parsing/params/1:3", parse->data);
+		error_exit("Invalid rgb", NULL, parse->data);
 	}
 	parse->crgb[0] = parse_int(tab[0]);
 	parse->crgb[1] = parse_int(tab[1]);
@@ -89,12 +89,12 @@ int	fc_frgb(t_parse *parse, char **ws)
 	{
 		free_tab(tab);
 		free_tab(ws);
-		error_exit("Invalid rgb", "parsing/params/1:3", parse->data);
+		error_exit("Invalid rgb", NULL, parse->data);
 	}
 	if (!only_digit(tab[0]) || !only_digit(tab[1]) || !only_digit(tab[2]))
 	{
 		free_tab(tab);
-		error_exit("Invalid rgb", "parsing/params/1:3", parse->data);
+		error_exit("Invalid rgb", NULL, parse->data);
 	}
 	parse->frgb[0] = parse_int(tab[0]);
 	parse->frgb[1] = parse_int(tab[1]);

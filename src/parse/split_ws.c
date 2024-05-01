@@ -6,7 +6,7 @@
 /*   By: waziz <waziz@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 13:25:54 by waziz             #+#    #+#             */
-/*   Updated: 2024/04/30 15:28:02 by waziz            ###   ########.fr       */
+/*   Updated: 2024/04/30 23:15:45 by waziz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,7 @@ char	**split_ws(char *s)
 
 	ws = malloc((count_word(s) + 1) * sizeof(char *));
 	if (!ws)
-		return (error_init("Allocated Memory Failed", "parsing/utils/3:3",
-				NULL));
+		return (error_init("Malloc Failed", NULL, NULL));
 	i = 0;
 	t = 0;
 	while (s[i])

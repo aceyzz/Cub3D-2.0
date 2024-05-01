@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
+/*   By: waziz <waziz@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 11:27:37 by waziz             #+#    #+#             */
-/*   Updated: 2024/04/30 17:39:20 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/30 23:15:45 by waziz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ int	check_one(t_parse *parse)
 			if (!isvalid(parse, t, i))
 			{
 				printf("Invalid character : %c\n", parse->map[t][i]);
-				return (error_exit("Invalid map", "parsing/map/1:1",
-						parse->data));
+				return (error_exit("Invalid map", NULL, parse->data));
 			}
 			i++;
 		}
@@ -37,7 +36,7 @@ int	check_one(t_parse *parse)
 	player = parse->check->no + parse->check->so + parse->check->ea
 		+ parse->check->we;
 	if (player != 1)
-		return (error_exit("Only one player", "parsing/map/1:1", parse->data));
+		return (error_exit("Only one player", NULL, parse->data));
 	return (1);
 }
 
@@ -49,12 +48,10 @@ int	check_two(t_parse *parse)
 
 	y = parse->pos_y;
 	if (y == 0 || y == (ft_tablen(parse->map) - 1))
-		return (error_exit("Player in the Wall", "parsing/map/1:2",
-				parse->data));
+		return (error_exit("Player in the Wall", NULL, parse->data));
 	fix_limit(parse->map[y], &limit_a, &limit_b);
 	if (parse->pos_x < limit_a || parse->pos_x > limit_b)
-		return (error_exit("Player hors limit", "parsing/map/1:2",
-				parse->data));
+		return (error_exit("Player hors limit", NULL, parse->data));
 	return (1);
 }
 
@@ -71,7 +68,7 @@ int	check_three(t_parse *parse)
 	{
 		fix_limit(parse->map[t], &limit_a, &limit_b);
 		if (parse->map[t][limit_a] != '1' || parse->map[t][limit_b] != '1')
-			return (error_exit("Invalid map", "parsing/map/1:3", parse->data));
+			return (error_exit("Invalid map", NULL, parse->data));
 		t++;
 	}
 	t--;
@@ -109,7 +106,7 @@ int	check_four(t_parse *parse)
 				if (!valid_space(parse, t, ia))
 				{
 					printf("y : %d | x : %d\n", t, ia);
-					return (error_exit("Invalid map", "check 4", parse->data));
+					return (error_exit("Invalid map", NULL, parse->data));
 				}
 			}
 			ia++;

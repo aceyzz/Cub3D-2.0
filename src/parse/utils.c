@@ -5,93 +5,86 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: waziz <waziz@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/29 15:17:29 by waziz             #+#    #+#             */
-/*   Updated: 2024/04/30 15:41:01 by waziz            ###   ########.fr       */
+/*   Created: 2024/04/27 15:56:58 by waziz             #+#    #+#             */
+/*   Updated: 2024/05/01 11:22:35 by waziz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-int	isvalid(t_parse *parse, int t, int i)
+int	ft_tablen(char **s)
 {
-	if (parse->map[t][i] == ' ' || parse->map[t][i] == '1'
-		|| parse->map[t][i] == '0' || parse->map[t][i] == 'N'
-		|| parse->map[t][i] == 'S' || parse->map[t][i] == 'E'
-		|| parse->map[t][i] == 'W')
+	int	t;
+
+	if (!s)
+		return (0);
+	t = 0;
+	while (s[t])
+		t++;
+	return (t);
+}
+
+char	**ft_tabdup(char **tab)
+{
+	char	**dup;
+	int		t;
+
+	if (!tab)
+		return (NULL);
+	dup = malloc((ft_tablen(tab) + 1) * sizeof(char *));
+	if (!dup)
+		return (NULL);
+	t = 0;
+	while (tab[t])
 	{
-		if (parse->map[t][i] == 'N' || parse->map[t][i] == 'S'
-			|| parse->map[t][i] == 'E' || parse->map[t][i] == 'W')
-		{
-			parse->pos_y = t;
-			parse->pos_x = i;
-			parse->ori = parse->map[t][i];
-		}
-		if (parse->map[t][i] == 'N')
-			parse->check->no++;
-		if (parse->map[t][i] == 'S')
-			parse->check->so++;
-		if (parse->map[t][i] == 'E')
-			parse->check->ea++;
-		if (parse->map[t][i] == 'W')
-			parse->check->we++;
-		return (1);
+		dup[t] = ft_strdup(tab[t]);
+		t++;
 	}
+	dup[t] = NULL;
+	return (dup);
+}
+
+int	is_void(char *s)
+{
+	int	i;
+
+	if (!s)
+		return (1);
+	i = 0;
+	while ((s[i] >= 9 && s[i] <= 13) || s[i] == 32)
+		i++;
+	if (s[i] == '\0')
+		return (1);
 	return (0);
 }
 
-void	fix_limit(char *s, int *limit_a, int *limit_b)
+static char	**erasing(char **params, int t)
 {
-	int	i;
+	char	*f;
 
-	i = 0;
-	while (s[i] && s[i] == 32)
-		i++;
-	(*limit_a) = i;
-	i = ft_strlen(s) - 1;
-	while (i > 0 && s[i] == 32)
-		i--;
-	(*limit_b) = i;
-}
-
-int	first_n_last(t_parse *parse, char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
+	f = params[t];
+	while (params[t])
 	{
-		if (s[i] == 32 || s[i] == '1')
-			i++;
-		else
-			return (error_exit("Invalid map", "parsing/map/4:3", parse->data));
-	}
-	return (1);
-}
-
-int	down_space(t_parse *parse, int t, int i)
-{
-	while (parse->map[t] && parse->map[t][i] == 32)
+		params[t] = params[t + 1];
 		t++;
-	if (!parse->map[t])
-		return (1);
-	if (parse->map[t][i] != '1')
-	{
-		printf("y : %d | x : %d\n", t, i);
-		return (error_exit("Invalid map", "parsing/map/4:4", parse->data));
 	}
-	return (1);
+	free(f);
+	return (params);
 }
 
-int	up_space(t_parse *parse, int t, int i)
+char	**erase_void(char **params)
 {
-	while (parse->map[t][i] == 32 && t > 0)
-		t--;
-	if (t == 0)
-		return (1);
-	if (parse->map[t][i] != '1')
+	int	t;
+
+	t = 0;
+	while (params[t])
 	{
-		printf("y : %d, x : %d\n", t, i);
-		return (error_exit("Invalid map", "parsing/map/4:5", parse->data));
+		if (is_void(params[t]))
+			params = erasing(params, t);
+		else
+			t++;
 	}
-	return (1);
+	if (t == 0)
+		return (error_init("Non-compliant file", NULL, NULL));
+	return (params);
 }

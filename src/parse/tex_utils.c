@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tex.c                                              :+:      :+:    :+:   */
+/*   tex_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
+/*   By: waziz <waziz@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 23:04:24 by waziz             #+#    #+#             */
-/*   Updated: 2024/04/30 17:41:28 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/04/30 23:15:45 by waziz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ t_tex	*init_texture(t_parse *parse)
 
 	texture = malloc(sizeof(t_tex));
 	if (!texture)
-		return (error_tex("Allocated Memory Failed", "parsing/parse/3:1",
-				parse->data));
+		return (error_tex("Malloc Failed", NULL, parse->data));
 	texture->type = 0;
 	texture->path = NULL;
 	texture->is_rgb = false;

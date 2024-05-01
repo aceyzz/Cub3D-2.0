@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   params_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
+/*   By: waziz <waziz@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 21:02:37 by waziz             #+#    #+#             */
-/*   Updated: 2024/04/30 22:48:32 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/05/01 11:22:29 by waziz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,12 @@ char	**init_params(t_data *data, char *filename)
 	params = ft_tabdup(file);
 	free_tab(file);
 	if (!params)
-		return (error_init("Allocated Memory Failed", "parsing/params/4:1",
-				data));
+		return (error_init("Malloc Failed", NULL, data));
 	params = erase_void(params);
 	if (ft_tablen(params) != 6)
 	{
 		free_tab(params);
-		return (error_init("Non-compliant file", "parsing/params/4:1", data));
+		return (error_init("Non-compliant file", NULL, data));
 	}
 	return (params);
 }

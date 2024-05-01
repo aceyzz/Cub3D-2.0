@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
+/*   By: waziz <waziz@student.42lausanne.ch>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 09:42:43 by waziz             #+#    #+#             */
-/*   Updated: 2024/04/30 20:32:45 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/05/01 11:22:29 by waziz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ static int	open_file(t_data *data, int *fd, char *filename)
 {
 	(*fd) = open(filename, O_RDONLY);
 	if ((*fd) == -1)
-		return (error_exit("Opening file failed", "parsing/parse/1:1", data));
+		return (error_exit("Opening file failed", NULL, data));
 	return (1);
 }
 
 static int	close_file(t_data *data, int fd)
 {
 	if (close(fd) == -1)
-		return (error_exit("Closing file failed", "parsing/parse/1:2", data));
+		return (error_exit("Closing file failed", NULL, data));
 	return (1);
 }
 
@@ -43,7 +43,7 @@ static int	count_characters(t_data *data, char *filename)
 		if (isread == -1)
 		{
 			close_file(data, fd);
-			return (error_exit("Reading problem", "parsing/parse/1:3", data));
+			return (error_exit("Reading problem", NULL, data));
 		}
 		else if (isread == 0)
 			break ;
@@ -52,7 +52,7 @@ static int	count_characters(t_data *data, char *filename)
 	}
 	close_file(data, fd);
 	if (counter <= 0)
-		return (error_exit("Void file", "parsing/parse/1:3", data));
+		return (error_exit("Void file", NULL, data));
 	return (counter);
 }
 
@@ -77,8 +77,7 @@ char	**parse_file(t_data *data, char *filename)
 
 	join_file = malloc((count_characters(data, filename) + 1) * sizeof(char));
 	if (!join_file)
-		return (error_init("Allocating Memory Failed", "parsing/parse/1:5",
-				data));
+		return (error_init("Malloc Failed", NULL, data));
 	open_file(data, &fd, filename);
 	i = 0;
 	while (read(fd, &buffer, 1) > 0)
@@ -90,7 +89,7 @@ char	**parse_file(t_data *data, char *filename)
 	if (!is_valid(file))
 	{
 		free_tab(file);
-		return (error_init("Invalid File", "parsing/parse/1:5", data));
+		return (error_init("Invalid File", NULL, data));
 	}
 	return (file);
 }

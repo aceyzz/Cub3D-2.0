@@ -3,20 +3,20 @@
 NO             ./img/debug/nord.xpm
 
 
-SO ./img/debug/sud.xpm
+SO      ./img/debug/sud.xpm
 
                     
 
-WE ./img/debug/west.xpm
-F 220,100,0
+WE          ./img/debug/west.xpm
+F         220,100,0
           
 
-EA ./img/debug/est.xpm
+EA       ./img/debug/est.xpm
 						                   
 
                                
 
-C 225,30,25
+C          225,30,25
 
 
 
