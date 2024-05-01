@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 08:59:51 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/30 17:54:16 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/05/01 17:24:14 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	main(int argc, char **argv)
 	init_mlx(&data);
 	init_raycaster(&data);
 	init_imgs(&data);
+	start_sound();
 	mlx_mouse_move(data.mlx->win, X_RES / 2, Y_RES / 2);
 	mlx_mouse_hide();
 	mlx_hook(data.mlx->win, 2, 1L << 0, &keypress, &data);

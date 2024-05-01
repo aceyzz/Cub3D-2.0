@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 09:20:04 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/30 23:01:17 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/05/01 17:26:48 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 # define FOV 60
 # define COLLISION 0.3
-
-# define BONUS 1
 
 # define K_W 13
 # define K_A 0
@@ -28,9 +26,10 @@
 # define K_SHFT 257
 # define K_SPACE 49
 
-# define TSIZE 256
+# define TSIZE 512
+# define SQUARE_MINIMAP 40
 
-# define MOVE_SPEED 0.04
+# define MOVE_SPEED 0.05
 # define RUN_SPEED 0.08
 # define ROTA_SPEED 0.05
 
@@ -122,6 +121,12 @@ typedef struct s_flcl
 	double				dist_wall;
 }						t_flcl;
 
+typedef struct s_mini
+{
+	double				pos_x;
+	double				pos_y;
+}						t_mini;
+
 // MLX
 /* init.c */
 void					init_mlx(t_data *data);
@@ -172,5 +177,7 @@ unsigned int			rgb_to_hexa(int rgb[3]);
 // BONUS
 /* mouse.c */
 void					handle_mouse(t_data *data);
+void					start_sound();
+void					stop_sound();
 
 #endif

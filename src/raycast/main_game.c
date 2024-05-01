@@ -6,17 +6,11 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 11:22:35 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/30 22:53:53 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/05/01 16:30:19 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
-
-// ADD MINIMAP & SOUNDS
-static void	main_bonus(t_data *data)
-{
-	handle_mouse(data);
-}
 
 static void	dda(t_data *data, t_ray *ray)
 {
@@ -66,9 +60,8 @@ int	main_game(t_data *data)
 {
 	update_moves(data);
 	raycasting(data);
+	handle_mouse(data);
 	mlx_put_image_to_window(data->mlx->mlx, data->mlx->win, data->mlx->img, 0,
 		0);
-	if (BONUS == 1)
-		main_bonus(data);
 	return (0);
 }
