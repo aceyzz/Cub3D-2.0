@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waziz <waziz@student.42lausanne.ch>        +#+  +:+       +#+        */
+/*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 11:27:37 by waziz             #+#    #+#             */
-/*   Updated: 2024/04/30 23:15:45 by waziz            ###   ########.fr       */
+/*   Updated: 2024/05/19 15:12:24 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,10 +104,7 @@ int	check_four(t_parse *parse)
 			if (parse->map[t][ia] == 32)
 			{
 				if (!valid_space(parse, t, ia))
-				{
-					printf("y : %d | x : %d\n", t, ia);
 					return (error_exit("Invalid map", NULL, parse->data));
-				}
 			}
 			ia++;
 		}

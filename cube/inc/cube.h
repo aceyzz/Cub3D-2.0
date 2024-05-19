@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 09:00:02 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/04/30 17:33:40 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/05/18 20:22:50 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,12 @@ typedef struct s_tex
 // structure de données principales
 typedef struct s_data
 {
-	// init par Chris
 	char	**map;
 	int		pos_x;
 	int		pos_y;
 	t_ori	orientation;
 	t_tex	*tex;
 	t_parse	*parse;
-	// init par Ced
 	t_mlx	*mlx;
 	t_keys	*keys;
 	t_plyr	*player;

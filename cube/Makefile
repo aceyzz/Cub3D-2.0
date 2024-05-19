@@ -6,7 +6,7 @@
 #    By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/21 20:09:31 by cedmulle          #+#    #+#              #
-#    Updated: 2024/04/27 09:44:06 by cedmulle         ###   ########.fr        #
+#    Updated: 2024/05/18 20:34:39 by cedmulle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,13 +61,13 @@ all: $(OBJ_DIR)
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
-	@mkdir -p $(shell dirname $(OBJ))
+	@mkdir -p $(dir $(OBJ))
 
 $(NAME): $(OBJ)
 	@$(CC) $(CFL) $(MLX) -o $(NAME) $(OBJ) $(INC_DIR)libft/libft.a $(INC_DIR)mlx/libmlx.a
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)%.c
-	@mkdir -p $(dir $@)
+	@mkdir -p $(dir $@) > /dev/null 2>&1
 	@$(CC) $(CFL) -c $< -o $@ -I $(INC_DIR)
 	@echo "$(CLR)-> $(D_CYAN)Compiling $<$(RST)"
 
@@ -91,7 +91,7 @@ re: fclean all
 .PHONY: all clean fclean re
 
 norme:
-	@python3 -m norminette -R CheckDefine $(HEAD) $(LIBFT_DIR) $(SRC) | sed "s/Error/[1;31m&/; s/line:/[0m&/; s/$$/[0m/; s/OK!/[1;32m&/; s/KO/[1;31m&/; s/(/[0m&/"
+	@norminette -R CheckDefine $(HEAD) $(LIBFT_DIR) $(SRC) | sed "s/Error/[1;31m&/; s/line:/[0m&/; s/$$/[0m/; s/OK!/[1;32m&/; s/KO/[1;31m&/; s/(/[0m&/"
 	@echo "\n\033[1;32m---------------------------------\033[0m\n"
-	@python3 -m norminette -R CheckDefine $(HEAD) $(LIBFT_DIR) $(SRC) | awk '/^Error:/ {errorCount++} /OK/ {count++} END {total = NR - errorCount; if (count == total) {print "\033[1;32m\tOK: " count " / " total " total\033[0m"} else {print "\033[1;31m\tKO: " count " / " total " total\033[0m"}}'
+	@norminette -R CheckDefine $(HEAD) $(LIBFT_DIR) $(SRC) | awk '/^Error:/ {errorCount++} /OK/ {count++} END {total = NR - errorCount; if (count == total) {print "\033[1;32m\tOK: " count " / " total " total\033[0m"} else {print "\033[1;31m\tKO: " count " / " total " total\033[0m"}}'
 	@echo "\n\033[1;32m---------------------------------\033[0m\n"

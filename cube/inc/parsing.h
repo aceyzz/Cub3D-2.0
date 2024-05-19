@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 21:23:31 by waziz             #+#    #+#             */
-/*   Updated: 2024/04/30 22:41:42 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/05/19 14:26:39 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,5 +150,7 @@ int						ft_tablen(char **s);
 char					**ft_tabdup(char **tab);
 int						is_void(char *s);
 char					**erase_void(char **params);
+
+void					check_map_final(t_data *data);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: waziz <waziz@student.42lausanne.ch>        +#+  +:+       +#+        */
+/*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 15:17:29 by waziz             #+#    #+#             */
-/*   Updated: 2024/05/01 11:22:29 by waziz            ###   ########.fr       */
+/*   Updated: 2024/05/19 15:15:55 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	first_n_last(t_parse *parse, char *s)
 		if (s[i] == 32 || s[i] == '1')
 			i++;
 		else
-			return (error_exit("Invalid map", NULL, parse->data));
+			return (error_exit("Invalid map 1", NULL, parse->data));
 	}
 	return (1);
 }
@@ -74,10 +74,7 @@ int	down_space(t_parse *parse, int t, int i)
 	if (!parse->map[t])
 		return (1);
 	if (parse->map[t][i] != '1')
-	{
-		printf("y : %d | x : %d\n", t, i);
-		return (error_exit("Invalid map", NULL, parse->data));
-	}
+		return (error_exit("Invalid map 2", NULL, parse->data));
 	return (1);
 }
 
@@ -87,10 +84,8 @@ int	up_space(t_parse *parse, int t, int i)
 		t--;
 	if (t == 0)
 		return (1);
-	if (parse->map[t][i] != '1')
-	{
-		printf("y : %d, x : %d\n", t, i);
-		return (error_exit("Invalid map", NULL, parse->data));
-	}
+	if (parse->map[t][i] != '1' && parse->map[t][i] != '\n'
+		&& parse->map[t][i] != '\0')
+		return (error_exit("Invalid map 3", NULL, parse->data));
 	return (1);
 }

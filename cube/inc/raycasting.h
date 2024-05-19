@@ -6,14 +6,14 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 09:20:04 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/05/01 17:26:48 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/05/19 14:43:38 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAYCASTING_H
 # define RAYCASTING_H
 
-# define FOV 60
+# define FOV 50
 # define COLLISION 0.3
 
 # define K_W 13
@@ -29,9 +29,9 @@
 # define TSIZE 512
 # define SQUARE_MINIMAP 40
 
-# define MOVE_SPEED 0.05
-# define RUN_SPEED 0.08
-# define ROTA_SPEED 0.05
+# define MOVE_SPEED 0.07
+# define RUN_SPEED 0.09
+# define ROTA_SPEED 0.08
 
 typedef struct s_tex	t_tex;
 typedef struct s_data	t_data;
@@ -177,7 +177,7 @@ unsigned int			rgb_to_hexa(int rgb[3]);
 // BONUS
 /* mouse.c */
 void					handle_mouse(t_data *data);
-void					start_sound();
-void					stop_sound();
+void					start_sound(void);
+void					stop_sound(void);
 
 #endif

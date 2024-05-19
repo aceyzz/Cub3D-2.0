@@ -6,7 +6,7 @@
 /*   By: cedmulle <42-xvi@protonmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 08:59:51 by cedmulle          #+#    #+#             */
-/*   Updated: 2024/05/01 17:24:14 by cedmulle         ###   ########.fr       */
+/*   Updated: 2024/05/19 13:10:50 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	main(int argc, char **argv)
 		return (printf("%sError: Invalid number of arguments%s\n", REDD, RST));
 	init_data(&data);
 	ft_parsing(&data, argv[1]);
+	check_map_final(&data);
 	init_mlx(&data);
 	init_raycaster(&data);
 	init_imgs(&data);
